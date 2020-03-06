@@ -32,7 +32,7 @@ export const Nav = () => {
   const navPageLinks = [
     {
       label: "About",
-      path: "/about"
+      path: "/"
     },
     {
       label: "Projects",
@@ -47,8 +47,9 @@ export const Nav = () => {
   return (
     <div className="header">
       <h1 className="nav-name">Mark Lewis</h1>
+      <h5 className="nav-subtitle">Web Developer</h5>
 
-      <nav>
+      <nav className="nav-item-wrapper">
         {navPageLinks.map(link => (
           <p className="nav-item">
             <Link href={link.path} activeClassName="link-active">
