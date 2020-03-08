@@ -23,10 +23,9 @@ export default function App() {
       <Nav />
       <div className="main">
         <Router>
-          <Home path="/" />
+          <About path="/" />
           <Resume path="resume" />
           <Projects path="projects" />
-          <About path="about" />
           <Error default />
         </Router>
         <ScrollToTop />

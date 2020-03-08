@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
 
 // Mui
@@ -25,7 +25,7 @@ import logoPDFA from "../assets/logo-pdfa.png";
 import logoDEC from "../assets/logo-nswdec.png";
 
 export const Resume = ({ path }: { path: string }) => (
-  <div>
+  <Fragment>
     <Typography variant="h1">Resume</Typography>
     <Box className="content">
       <Timeline lineColor={"#ffc400"}>
@@ -76,7 +76,7 @@ export const Resume = ({ path }: { path: string }) => (
         ))}
       </Timeline>
     </Box>
-  </div>
+  </Fragment>
 );
 
 const timelineItems: {

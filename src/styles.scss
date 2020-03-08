@@ -1,7 +1,8 @@
 $primary-color: #484848;
 $secondary-color: #ffc400;
 $text: #424242;
-$grey-main: #9e9e9e;
+// $grey-main: #9e9e9e;
+$grey-main: #888888;
 $grey-light: #e0e0e0;
 $grey-extra-light: #f8f8f8;
 
@@ -29,6 +30,12 @@ a:visited {
 a:hover {
   color: $secondary-color;
 }
+.bounce-in {
+  visibility: visible;
+  -webkit-animation: bounce-in 0.4s;
+  -moz-animation: bounce-in 0.4s;
+  animation: bounce-in 0.4s;
+}
 
 .contact-links {
   padding-left: unset;
@@ -40,10 +47,6 @@ a:hover {
     color: inherit;
   }
 }
-// .contact-link:first-of-type {
-//   display: inline-block;
-//   margin-left: 0;
-// }
 
 .content {
   margin: 2rem auto;
@@ -67,9 +70,7 @@ a:hover {
 
 a.link-active {
   color: $secondary-color;
-  // border-bottom: 1px solid $secondary-color;
   font-weight: 400;
-  // padding-bottom: 2px;
 }
 .header,
 .main {
@@ -85,25 +86,49 @@ a.link-active {
     margin-left: $nav-width;
   }
 }
-
-.nav-name {
-  border-bottom: 1px solid $grey-light;
-  color: $text;
-  font-size: 1.75rem;
-  font-weight: 300;
-  padding-bottom: 1rem;
+.nav-item-wrapper {
+  border-top: 1px solid $grey-light;
+  padding-top: 0.5rem;
   text-align: center;
   width: 80%;
   max-width: 350px;
+
+  @media only screen and (min-width: $md) {
+    text-align: right;
+  }
+}
+.nav-name {
+  color: $text;
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin-bottom: 0;
+  text-align: center;
 
   @media only screen and (min-width: $sm) {
     font-size: 2rem;
   }
 
   @media only screen and (min-width: $md) {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     text-align: right;
+  }
+}
 
+.nav-subtitle {
+  color: $grey-main;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding-bottom: 1.5rem;
+  margin: 0;
+  text-align: center;
+
+  @media only screen and (min-width: $sm) {
+    font-size: 1rem;
+  }
+
+  @media only screen and (min-width: $md) {
+    font-size: 0.95rem;
+    text-align: right;
     width: 195px;
   }
 }
@@ -144,24 +169,51 @@ a.link-active {
   margin-bottom: 3em;
   width: 100%;
 }
-
-// .project-card {
-//   max-width: 345px;
-// }
+.project-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.project-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 .project-card-media {
   height: 250px;
+  box-shadow: 0px -5px 4px 2px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
-.project-title {
-  margin-bottom: 1rem;
+.project-description {
+  flex-grow: 1;
+}
+.project-section-heading,
+h5.project-section-heading {
+  margin: 1rem 0 0.5rem;
+}
+.project-link,
+h4.project-subtitle {
+  padding: 8px 0;
+}
+.project-title-wrapper {
+  margin-bottom: 8px;
+}
+h3.project-title {
+  margin-right: 1rem;
 }
 .project-type-chip {
-  margin-left: 1rem;
+  text-transform: capitalize;
+  > span {
+    color: #fff;
+  }
 }
 
 // resume overrides
-.stack-area {
+p.stack-area {
+  color: $grey-main;
+  margin-top: 5px;
   text-transform: capitalize;
-  width: 250px;
+  // width: 250px;
 }
 .stack-area-chip {
   margin: 4px;
@@ -228,9 +280,3 @@ a.link-active {
     z-index: 99;
   }
 }
-// .entry .body {
-//   @media only screen and (max-width: $md) {
-//     margin: 20px 0 3em;
-//     width: 100%;
-//   }
-// }
