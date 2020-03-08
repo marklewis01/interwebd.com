@@ -64,7 +64,7 @@ export const Projects = ({ path }: { path: string }) => {
                     }
                   />
                 </a>
-                <CardContent>
+                <CardContent className="project-card-content">
                   <Grid
                     container
                     alignItems="center"
@@ -102,13 +102,15 @@ export const Projects = ({ path }: { path: string }) => {
                     </a>
                   </Typography>
 
-                  <Typography variant="body1">{project.description}</Typography>
+                  <Typography variant="body1" className="project-description">
+                    {project.description}
+                  </Typography>
 
                   {project.stack ? (
-                    <div className="project-section-heading">
+                    <Grid container className="project-section-heading">
                       {Object.keys(project.stack).map((key: StackAreas, idx) =>
                         project.stack[key].length ? (
-                          <div>
+                          <Grid item xs={12} sm>
                             <Typography variant="body2" className="stack-area">
                               {key}:
                             </Typography>
@@ -121,7 +123,7 @@ export const Projects = ({ path }: { path: string }) => {
                                 className="stack-area-chip"
                               />
                             ))}
-                          </div>
+                          </Grid>
                         ) : null
                       )}
                     </div>
@@ -138,9 +140,21 @@ export const Projects = ({ path }: { path: string }) => {
 
 const projects: Project[] = [
   {
+    title: "Interwebd",
+    subtitle: "This very site you're on right now!",
+    description: `A portfolio site to showcase some of my skills and a chance to get to know Preact.js.
+      Preact is a 3kB React alternative, so this site it super small in footprint
+       ...which helps make it super fast!`,
+    link: "https://interwebd.com",
+    image: interwebdImg,
+    stack: {
+      frontend: ["preact", "Material-UI", "TypeScript"]
+    },
+    type: "website"
+  },
+  {
     title: "Finishes - Public Marketing Site",
-    subtitle:
-      "Custom SaaS solution for material selection in the construction industry",
+    subtitle: "Customised WordPress site using the Divi theme-builder",
     link: "https://finishes.app",
     image: finishesImg,
     description:
@@ -149,9 +163,10 @@ const projects: Project[] = [
       elements: [
         "WordPress",
         "responsive",
-        "illustrations",
-        "screen captures",
-        "forms"
+        "divi",
+        "css",
+        "forms",
+        "illustrations"
       ]
     },
     type: "website"
@@ -159,7 +174,7 @@ const projects: Project[] = [
   {
     title: "Finishes - Application",
     subtitle:
-      "Custom SaaS solution for material selection in the construction industry",
+      "A custom SaaS solution for material selection in the construction industry",
     link: "https://my.finishes.app",
     image: finishesApp,
     description:
@@ -170,71 +185,55 @@ const projects: Project[] = [
         "redux",
         "react-router",
         "Material-UI",
-        "Styled-Components"
+        // "Styled-Components",
+        "TypeScript"
       ],
       backend: [
         "Firebase",
-        "Firebase Authentication",
-        "Cloud Firestore",
-        "Firebase Storage",
-        "Firebase Hosting"
+        "Authentication",
+        "Firestore",
+        "Storage",
+        "Typescript",
+        "Node"
       ]
     },
     type: "web application"
   },
   {
     title: "Simple GatsbyJS Website",
+    subtitle: "Getting to know GatsbyJS and Server-side-rendering"
     link: "https://marklewis01.github.io/simple-gatsby-site",
     image: gatsbyImg,
     description:
-      "A project to get to know server-side rendering. GatsbyJS static generated site",
+      "Getting to know server-side rendering. GatsbyJS static generated site",
     stack: {
-      frontend: ["Gatsby", "JSS", "Material-UI", "SASS"],
-      backend: ["ssr"]
+      frontend: ["Gatsby", "JSS", "Material-UI", "SASS"]
     },
     type: "template"
   },
   {
     title: "Firebase Starter",
     subtitle:
-      "A starter template with authentication, login and protected routes.",
+      "A starter template with authentication, protected routes, and some local state management.",
     link: "https://material-ui-mobx-starter.firebaseapp.com",
     image: firebaseImg,
     description:
       "A starter template with authentication, login and protected routes.",
     stack: {
       frontend: ["Unstated.js", "Material-UI"],
-      backend: [
-        "Firebase",
-        "Firebase Authentication",
-        "Cloud Firestore",
-        "Firebase Hosting"
-      ]
+      backend: ["Firebase", "Authentication", "Firestore"]
     },
     type: "template"
   },
   {
     title: "Junglefy Pty Ltd",
-    subtitle: "A ",
+    subtitle: "A customized WordPress site",
     link: "https://junglefy.com.au",
     image: junglefyImg,
     description:
-      "A starter template with authentication, login and protected routes.",
+      "Based on Client-supplied UI designs and graphics, I configured an off-the-shelf WordPress theme to the Client's specification.",
     stack: {
-      frontend: ["Unstated.js", "Material-UI"],
-      backend: ["WordPress", "Customized Theme"]
-    },
-    type: "website"
-  },
-  {
-    title: "Interwebd",
-    description: `This very site. A portfolio site to showcase some of my skill, build with Preact.js.
-      Preact is a 3kB React alternative, so this site it super small in footprint
-       ...which helps make it super fast!`,
-    link: "https://interwebd.com",
-    image: interwebdImg,
-    stack: {
-      frontend: ["preact", "Material-UI"]
+      elements: ["WordPress", "Customized Theme"]
     },
     type: "website"
   }

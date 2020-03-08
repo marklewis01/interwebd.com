@@ -171,11 +171,21 @@ a.link-active {
 }
 .project-card {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.project-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .project-card-media {
   height: 250px;
   box-shadow: 0px -5px 4px 2px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+.project-description {
+  flex-grow: 1;
 }
 .project-section-heading,
 h5.project-section-heading {
@@ -203,7 +213,7 @@ p.stack-area {
   color: $grey-main;
   margin-top: 5px;
   text-transform: capitalize;
-  width: 250px;
+  // width: 250px;
 }
 .stack-area-chip {
   margin: 4px;
