@@ -126,7 +126,7 @@ export const Projects = ({ path }: { path: string }) => {
                           </Grid>
                         ) : null
                       )}
-                    </div>
+                    </Grid>
                   ) : null}
                 </CardContent>
               </Card>
