@@ -1,5 +1,5 @@
 import { h } from "preact";
-import Match, { Link } from "preact-router/match";
+import { Link } from "preact-router/match";
 
 // Mui
 import { IconButton, Typography } from "@material-ui/core";
@@ -40,10 +40,6 @@ export const Nav = () => {
     {
       label: "Resume",
       path: "/resume"
-    },
-    {
-      label: "Contact",
-      path: "/contact"
     }
   ];
 

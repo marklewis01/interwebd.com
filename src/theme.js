@@ -13,7 +13,7 @@ const theme = createMuiTheme({
     }
   },
   palette: {
-    primary: { main: "#00bcd4" },
+    primary: { main: "#484848" },
     secondary: { main: "#ffc400" },
     error: {
       main: red.A400

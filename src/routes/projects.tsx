@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 
 // Mui
@@ -9,8 +9,10 @@ import {
   CardMedia,
   Chip,
   Grid,
+  TextField,
   Typography
 } from "@material-ui/core";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 // Icons
 import CodeIcon from "@material-ui/icons/Code";
@@ -24,6 +26,30 @@ import firebaseImg from "../assets/projects/firebase-starter-hero.png";
 import gatsbyImg from "../assets/projects/gatsby-hero.png";
 import interwebdImg from "../assets/projects/interwebd-hero.png";
 
+let stackTech = [
+  "Authentication",
+  "CSS",
+  "Customized Theme",
+  "Divi",
+  "Firebase",
+  "Firestore",
+  "Gatsby",
+  "Illustrations",
+  "JSS",
+  "Material-UI",
+  "Node",
+  "Preact",
+  "React",
+  "React-Router",
+  "Redux",
+  "Responsive",
+  "SASS",
+  "Storage",
+  "TypeScript",
+  "Unstated.js",
+  "WordPress"
+] as const;
+
 // TS
 interface Project {
   title: string;
@@ -36,130 +62,188 @@ interface Project {
   };
   codebase?: string;
   stack?: {
-    [key in StackAreas]?: string[];
+    [key in StackAreas]?: StackTech[];
   };
   type?: "website" | "web application" | "mobile app" | "template";
 }
 type StackAreas = "frontend" | "backend" | "elements";
+type StackTech = typeof stackTech[number];
 
 export const Projects = ({ path }: { path: string }) => {
+  const [filters, setFilters] = useState<string[]>([]);
+
+  const handleChange = (event: React.ChangeEvent<{}>, value: string[]) => {
+    setFilters(value);
+  };
+
   return (
-    <div>
-      <Typography variant="h1">Projects</Typography>
+    <Fragment>
+      <Grid container justify="space-between" alignItems="flex-start">
+        <Grid item xs={12} sm={6} lg>
+          <Typography variant="h1">Projects</Typography>
+        </Grid>
+        <Grid item xs={12} sm={6} lg="4">
+          <Autocomplete
+            multiple={true}
+            id="tech-filters"
+            onChange={handleChange}
+            options={stackTech}
+            disableCloseOnSelect
+            size="small"
+            style={{ marginTop: 8, width: "100%" }}
+            renderInput={params => (
+              <TextField
+                {...params}
+                variant="outlined"
+                label="Filter projects by technology"
+              />
+            )}
+          />
+        </Grid>
+      </Grid>
       <Box className="content">
         <Grid container spacing={3} alignItems="stretch">
-          {projects.map(project => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              lg={4}
-              className="timeline--animate entry bounce-in"
-            >
-              <Card variant="outlined" className="project-card">
-                <a
-                  href={project.link.web}
-                  target="_blank"
-                  title={`Open ${project.title} in new tab`}
+          {projects
+            .filter(project => {
+              if (filters.length === 0) {
+                return project;
+              }
+              for (const tech of filters) {
+                for (const area in project.stack) {
+                  if (project.stack[area].includes(tech)) {
+                    return project;
+                  }
+                }
+              }
+            })
+            .map(p => {
+              return (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  lg={4}
+                  className="timeline--animate entry bounce-in"
                 >
-                  <CardMedia
-                    className="project-card-media"
-                    image={
-                      project.image ||
-                      "https://source.unsplash.com/random/800x500"
-                    }
-                  />
-                </a>
-                <CardContent className="project-card-content">
-                  <Grid
-                    container
-                    alignItems="center"
-                    className="project-title-wrapper"
-                  >
-                    <Typography
-                      display="inline"
-                      variant="h3"
-                      className="project-title"
+                  <Card variant="outlined" className="project-card">
+                    <a
+                      href={p.link.web}
+                      target="_blank"
+                      title={`Open ${p.title} in new tab`}
                     >
-                      {project.title}
-                    </Typography>
-                    {project.type ? (
-                      <Chip
-                        label={project.type}
-                        size="small"
-                        color="secondary"
-                        classes={{ colorSecondary: "project-type-chip" }}
+                      <CardMedia
+                        className="project-card-media"
+                        image={
+                          p.image ||
+                          "https://source.unsplash.com/random/800x500"
+                        }
                       />
-                    ) : null}
-                  </Grid>
-                  {project.subtitle ? (
-                    <Typography variant="h4" className="project-subtitle">
-                      {project.subtitle}
-                    </Typography>
-                  ) : null}
-
-                  <Grid container alignItems="center">
-                    <LanguageIcon />
-                    <Typography
-                      display="inline"
-                      variant="caption"
-                      component="p"
-                      className="project-link"
-                    >
-                      <a href={project.link.web} target="_blank">
-                        Website
-                      </a>
-                    </Typography>
-                  </Grid>
-                  {project.link.codebase ? (
-                    <Grid container alignItems="center">
-                      <CodeIcon />
-                      <Typography
-                        display="inline"
-                        variant="caption"
-                        component="p"
-                        className="project-link"
+                    </a>
+                    <CardContent className="project-card-content">
+                      <Grid
+                        container
+                        alignItems="center"
+                        className="project-title-wrapper"
                       >
-                        <a href={project.link.codebase} target="_blank">
-                          Codebase
-                        </a>
+                        <Typography
+                          display="inline"
+                          variant="h3"
+                          className="project-title"
+                        >
+                          {p.title}
+                        </Typography>
+                        {p.type ? (
+                          <Chip
+                            label={p.type}
+                            size="small"
+                            color="secondary"
+                            classes={{ colorSecondary: "project-type-chip" }}
+                          />
+                        ) : null}
+                      </Grid>
+                      {p.subtitle ? (
+                        <Typography variant="h4" className="project-subtitle">
+                          {p.subtitle}
+                        </Typography>
+                      ) : null}
+
+                      <Grid container alignItems="center">
+                        <LanguageIcon />
+                        <Typography
+                          display="inline"
+                          variant="caption"
+                          component="p"
+                          className="project-link"
+                        >
+                          <a href={p.link.web} target="_blank">
+                            Website
+                          </a>
+                        </Typography>
+                      </Grid>
+                      {p.link.codebase ? (
+                        <Grid container alignItems="center">
+                          <CodeIcon />
+                          <Typography
+                            display="inline"
+                            variant="caption"
+                            component="p"
+                            className="project-link"
+                          >
+                            <a href={p.link.codebase} target="_blank">
+                              Codebase
+                            </a>
+                          </Typography>
+                        </Grid>
+                      ) : null}
+
+                      <Typography
+                        variant="body1"
+                        className="project-description"
+                      >
+                        {p.description}
                       </Typography>
-                    </Grid>
-                  ) : null}
 
-                  <Typography variant="body1" className="project-description">
-                    {project.description}
-                  </Typography>
-
-                  {project.stack ? (
-                    <Grid container className="project-section-heading">
-                      {Object.keys(project.stack).map((key: StackAreas, idx) =>
-                        project.stack[key].length ? (
-                          <Grid item xs={12} sm>
-                            <Typography variant="body2" className="stack-area">
-                              {key}:
-                            </Typography>
-                            {project.stack[key].map((tech, idx) => (
-                              <Chip
-                                key={idx}
-                                size="small"
-                                variant="outlined"
-                                label={tech.replace(" ", "-").toLowerCase()}
-                                className="stack-area-chip"
-                              />
-                            ))}
-                          </Grid>
-                        ) : null
-                      )}
-                    </Grid>
-                  ) : null}
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+                      {p.stack ? (
+                        <Grid container className="project-section-heading">
+                          {Object.keys(p.stack).map((key: StackAreas, idx) =>
+                            p.stack[key].length ? (
+                              <Grid key={idx} item xs={12} sm>
+                                <Typography
+                                  variant="body2"
+                                  className="stack-area"
+                                >
+                                  {key}:
+                                </Typography>
+                                {p.stack[key]
+                                  .sort((a, b) =>
+                                    a
+                                      .toLowerCase()
+                                      .localeCompare(b.toLowerCase())
+                                  )
+                                  .map((tech, idx) => (
+                                    <Chip
+                                      key={idx}
+                                      size="small"
+                                      variant="outlined"
+                                      label={tech
+                                        .replace(" ", "-")
+                                        .toLowerCase()}
+                                      className="stack-area-chip"
+                                    />
+                                  ))}
+                              </Grid>
+                            ) : null
+                          )}
+                        </Grid>
+                      ) : null}
+                    </CardContent>
+                  </Card>
+                </Grid>
+              );
+            })}
         </Grid>
       </Box>
-    </div>
+    </Fragment>
   );
 };
 
@@ -176,7 +260,7 @@ const projects: Project[] = [
     },
     image: interwebdImg,
     stack: {
-      frontend: ["preact", "Material-UI", "TypeScript"]
+      frontend: ["Preact", "Material-UI", "TypeScript"]
     },
     type: "website"
   },
@@ -190,14 +274,7 @@ const projects: Project[] = [
     description:
       "A personal project to build my first SaaS application. First version of application built with Node.js with Express, Passport.js, MongoDB, and a HTML/CSS/jQuery front-end.",
     stack: {
-      elements: [
-        "WordPress",
-        "responsive",
-        "divi",
-        "css",
-        "forms",
-        "illustrations"
-      ]
+      elements: ["WordPress", "Responsive", "Divi", "CSS", "Illustrations"]
     },
     type: "website"
   },
@@ -213,9 +290,9 @@ const projects: Project[] = [
       "A personal project to build my first SaaS application. First version of application built with Node.js with Express, Passport.js, MongoDB, and a HTML/CSS/jQuery front-end.",
     stack: {
       frontend: [
-        "react",
-        "redux",
-        "react-router",
+        "React",
+        "Redux",
+        "React-Router",
         "Material-UI",
         // "Styled-Components",
         "TypeScript"
@@ -225,7 +302,7 @@ const projects: Project[] = [
         "Authentication",
         "Firestore",
         "Storage",
-        "Typescript",
+        "TypeScript",
         "Node"
       ]
     },
