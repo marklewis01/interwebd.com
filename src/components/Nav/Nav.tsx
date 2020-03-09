@@ -55,6 +55,9 @@ export const Nav = () => {
       />
       <h1 className="nav-name">Mark Lewis</h1>
       <h5 className="nav-subtitle">Web Developer</h5>
+      <Typography variant="h4" className="nav-mini-bio">
+        I get a kick out of building ideas and understanding how things work.
+      </Typography>
 
       <nav className="nav-item-wrapper">
         {navPageLinks.map(link => (

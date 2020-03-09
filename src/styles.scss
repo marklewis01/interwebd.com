@@ -111,7 +111,6 @@ a.link-active {
   font-weight: 300;
   margin-bottom: 0;
   margin-top: 2rem;
-  text-align: center;
 
   @media only screen and (min-width: $sm) {
     font-size: 2rem;
@@ -119,17 +118,17 @@ a.link-active {
 
   @media only screen and (min-width: $md) {
     font-size: 1.75rem;
-    text-align: right;
   }
 }
-
+.nav-mini-bio {
+  padding-bottom: 1.5rem;
+}
 .nav-subtitle {
   color: $grey-main;
   font-size: 0.9rem;
   font-weight: 300;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
   margin: 0;
-  text-align: center;
 
   @media only screen and (min-width: $sm) {
     font-size: 1rem;
@@ -137,9 +136,18 @@ a.link-active {
 
   @media only screen and (min-width: $md) {
     font-size: 0.95rem;
+  }
+}
+.nav-name,
+.nav-subtitle,
+.nav-mini-bio {
+  text-align: center;
+
+  @media only screen and (min-width: $md) {
     text-align: right;
   }
 }
+
 .nav-item {
   display: inline;
   font-size: 1.1rem;
