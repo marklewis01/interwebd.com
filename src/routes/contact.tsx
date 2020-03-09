@@ -3,7 +3,7 @@ import { h } from "preact";
 // Mui
 import { Box, Grid, Typography } from "@material-ui/core";
 
-export const About = ({ path }: { path: string }) => (
+export const Contact = ({ path }: { path: string }) => (
   <div>
     <Typography variant="h1">About</Typography>
     <Box className="content">
