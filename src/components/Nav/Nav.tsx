@@ -7,6 +7,9 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 
+// assets
+import ml_photo from "../../assets/mlewis_pic_sketch.png";
+
 export const Nav = () => {
   const handleClick = (s: string) => {
     s.startsWith("mailto")
@@ -31,23 +34,30 @@ export const Nav = () => {
 
   const navPageLinks = [
     {
-      label: "About",
-      path: "/"
-    },
-    {
       label: "Projects",
-      path: "/projects"
+      path: "/"
     },
     {
       label: "Resume",
       path: "/resume"
+    },
+    {
+      label: "Contact",
+      path: "/contact"
     }
   ];
 
   return (
     <div className="header">
+      <div
+        style={{ background: `center/cover no-repeat url(${ml_photo})` }}
+        className="nav-avatar"
+      />
       <h1 className="nav-name">Mark Lewis</h1>
       <h5 className="nav-subtitle">Web Developer</h5>
+      <Typography variant="h4" className="nav-mini-bio">
+        I get a kick out of building ideas and understanding how things work.
+      </Typography>
 
       <nav className="nav-item-wrapper">
         {navPageLinks.map(link => (

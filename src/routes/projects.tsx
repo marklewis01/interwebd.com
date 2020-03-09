@@ -1,4 +1,4 @@
-import { h, Li } from "preact";
+import { h } from "preact";
 import { useState } from "preact/hooks";
 
 // Mui
@@ -9,9 +9,12 @@ import {
   CardMedia,
   Chip,
   Grid,
-  Tooltip,
   Typography
 } from "@material-ui/core";
+
+// Icons
+import CodeIcon from "@material-ui/icons/Code";
+import LanguageIcon from "@material-ui/icons/Language";
 
 // Assets
 import junglefyImg from "../assets/projects/junglefy-hero.png";
@@ -27,7 +30,10 @@ interface Project {
   subtitle?: string;
   description: string;
   image?: any;
-  link: string;
+  link: {
+    codebase?: string;
+    web?: string;
+  };
   codebase?: string;
   stack?: {
     [key in StackAreas]?: string[];
@@ -47,12 +53,12 @@ export const Projects = ({ path }: { path: string }) => {
               item
               xs={12}
               sm={6}
-              md={4}
+              lg={4}
               className="timeline--animate entry bounce-in"
             >
               <Card variant="outlined" className="project-card">
                 <a
-                  href={project.link}
+                  href={project.link.web}
                   target="_blank"
                   title={`Open ${project.title} in new tab`}
                 >
@@ -92,15 +98,34 @@ export const Projects = ({ path }: { path: string }) => {
                     </Typography>
                   ) : null}
 
-                  <Typography
-                    variant="caption"
-                    component="p"
-                    className="project-link"
-                  >
-                    <a href={project.link} target="_blank">
-                      {project.link}
-                    </a>
-                  </Typography>
+                  <Grid container alignItems="center">
+                    <LanguageIcon />
+                    <Typography
+                      display="inline"
+                      variant="caption"
+                      component="p"
+                      className="project-link"
+                    >
+                      <a href={project.link.web} target="_blank">
+                        Website
+                      </a>
+                    </Typography>
+                  </Grid>
+                  {project.link.codebase ? (
+                    <Grid container alignItems="center">
+                      <CodeIcon />
+                      <Typography
+                        display="inline"
+                        variant="caption"
+                        component="p"
+                        className="project-link"
+                      >
+                        <a href={project.link.codebase} target="_blank">
+                          Codebase
+                        </a>
+                      </Typography>
+                    </Grid>
+                  ) : null}
 
                   <Typography variant="body1" className="project-description">
                     {project.description}
@@ -126,7 +151,7 @@ export const Projects = ({ path }: { path: string }) => {
                           </Grid>
                         ) : null
                       )}
-                    </div>
+                    </Grid>
                   ) : null}
                 </CardContent>
               </Card>
@@ -141,11 +166,14 @@ export const Projects = ({ path }: { path: string }) => {
 const projects: Project[] = [
   {
     title: "Interwebd",
-    subtitle: "This very site you're on right now!",
+    subtitle: "Getting to know PreactJS. This very site you're on!",
     description: `A portfolio site to showcase some of my skills and a chance to get to know Preact.js.
       Preact is a 3kB React alternative, so this site it super small in footprint
        ...which helps make it super fast!`,
-    link: "https://interwebd.com",
+    link: {
+      codebase: "https://github.com/marklewis01/interwebd.com",
+      web: "https://interwebd.com"
+    },
     image: interwebdImg,
     stack: {
       frontend: ["preact", "Material-UI", "TypeScript"]
@@ -155,7 +183,9 @@ const projects: Project[] = [
   {
     title: "Finishes - Public Marketing Site",
     subtitle: "Customised WordPress site using the Divi theme-builder",
-    link: "https://finishes.app",
+    link: {
+      web: "https://finishes.app"
+    },
     image: finishesImg,
     description:
       "A personal project to build my first SaaS application. First version of application built with Node.js with Express, Passport.js, MongoDB, and a HTML/CSS/jQuery front-end.",
@@ -175,7 +205,9 @@ const projects: Project[] = [
     title: "Finishes - Application",
     subtitle:
       "A custom SaaS solution for material selection in the construction industry",
-    link: "https://my.finishes.app",
+    link: {
+      web: "https://my.finishes.app"
+    },
     image: finishesApp,
     description:
       "A personal project to build my first SaaS application. First version of application built with Node.js with Express, Passport.js, MongoDB, and a HTML/CSS/jQuery front-end.",
@@ -201,8 +233,11 @@ const projects: Project[] = [
   },
   {
     title: "Simple GatsbyJS Website",
-    subtitle: "Getting to know GatsbyJS and Server-side-rendering"
-    link: "https://marklewis01.github.io/simple-gatsby-site",
+    subtitle: "Getting to know GatsbyJS and Server-side-rendering",
+    link: {
+      codebase: "https://github.com/marklewis01/simple-gatsby-site",
+      web: "https://marklewis01.github.io/simple-gatsby-site"
+    },
     image: gatsbyImg,
     description:
       "Getting to know server-side rendering. GatsbyJS static generated site",
@@ -215,7 +250,10 @@ const projects: Project[] = [
     title: "Firebase Starter",
     subtitle:
       "A starter template with authentication, protected routes, and some local state management.",
-    link: "https://material-ui-mobx-starter.firebaseapp.com",
+    link: {
+      codebase: "https://github.com/marklewis01/react-materialui-starter",
+      web: "https://material-ui-mobx-starter.firebaseapp.com"
+    },
     image: firebaseImg,
     description:
       "A starter template with authentication, login and protected routes.",
@@ -228,7 +266,9 @@ const projects: Project[] = [
   {
     title: "Junglefy Pty Ltd",
     subtitle: "A customized WordPress site",
-    link: "https://junglefy.com.au",
+    link: {
+      web: "https://junglefy.com.au"
+    },
     image: junglefyImg,
     description:
       "Based on Client-supplied UI designs and graphics, I configured an off-the-shelf WordPress theme to the Client's specification.",

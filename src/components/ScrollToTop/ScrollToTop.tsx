@@ -9,7 +9,6 @@ const useStyles = makeStyles(styles);
 
 export const ScrollToTop = () => {
   const classes = useStyles();
-  const ref = createRef();
 
   const visibilityTrigger = useScrollTrigger({
     disableHysteresis: true,

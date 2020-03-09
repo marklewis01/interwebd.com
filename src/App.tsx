@@ -9,7 +9,7 @@ import { Nav } from "./components/Nav";
 import ScrollToTop from "./components/ScrollToTop";
 
 // routes/pages
-import { About, Resume, Projects } from "./routes";
+import { Contact, Resume, Projects } from "./routes";
 
 // styles
 import "./styles.scss";
@@ -18,15 +18,19 @@ const Home = () => <Typography variant="h2">Home Page</Typography>;
 const Error = () => <h3>Error</h3>;
 
 export default function App() {
+  const handleRouteChange = () => {
+    window.scrollTo({ top: 0, left: 0 });
+  };
+
   return (
     <Grid container>
       <Nav />
       <div className="main">
-        <Router>
-          <About path="/" />
+        <Router onChange={handleRouteChange}>
+          <Projects path="/" />
+          <Contact path="/contact" />
           <Resume path="resume" />
-          <Projects path="projects" />
-          <Error default />
+          {/* <Error default /> */}
         </Router>
         <ScrollToTop />
       </div>
