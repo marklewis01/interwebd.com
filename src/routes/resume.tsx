@@ -12,7 +12,11 @@ import {
   ListItemText,
   Typography
 } from "@material-ui/core";
-import Check from "@material-ui/icons/Check";
+
+// icons
+import DoneIcon from "@material-ui/icons/Done";
+import LabelImportantIcon from "@material-ui/icons/LabelImportant";
+import CheckBoxOutlinedIcon from "@material-ui/icons/CheckBoxOutlined";
 
 // logos
 import logoDD from "../assets/logo-didata.png";
@@ -48,25 +52,54 @@ export const Resume = ({ path }: { path: string }) => (
               </Grid>
               <Grid container>
                 <Typography variant="body1">{item.description}</Typography>
+                {item.highlights ? (
+                  <Grid container>
+                    <Grid item xs={12}>
+                      <Typography variant="h5">Highlights:</Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <List dense>
+                        {item.highlights.map((point, idx) => (
+                          <ListItem
+                            key={idx}
+                            disableGutters
+                            className="timeline-item-duties"
+                          >
+                            <ListItemIcon className="resume-icon">
+                              <CheckBoxOutlinedIcon />
+                            </ListItemIcon>
+                            <ListItemText className="highlight">
+                              {point};
+                            </ListItemText>
+                          </ListItem>
+                        ))}
+                      </List>
+                    </Grid>
+                  </Grid>
+                ) : null}
                 {item.duties ? (
                   <Grid container>
-                    <Typography variant="h5">
-                      Key Duties / Responsibilities:
-                    </Typography>
-                    <List dense>
-                      {item.duties.map((duty, idx) => (
-                        <ListItem
-                          key={idx}
-                          disableGutters
-                          className="timeline-item-duties"
-                        >
-                          <ListItemIcon>
-                            <Check />
-                          </ListItemIcon>
-                          <ListItemText>{duty}</ListItemText>
-                        </ListItem>
-                      ))}
-                    </List>
+                    <Grid item xs={12}>
+                      <Typography variant="h5">
+                        Key Duties / Responsibilities:
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <List dense>
+                        {item.duties.map((duty, idx) => (
+                          <ListItem
+                            key={idx}
+                            disableGutters
+                            className="timeline-item-duties"
+                          >
+                            <ListItemIcon className="resume-icon">
+                              <DoneIcon />
+                            </ListItemIcon>
+                            <ListItemText>{duty}</ListItemText>
+                          </ListItem>
+                        ))}
+                      </List>
+                    </Grid>
                   </Grid>
                 ) : null}
               </Grid>
@@ -84,6 +117,7 @@ const timelineItems: {
   subheading?: string;
   logo?: any;
   description: JSX.Element;
+  highlights?: string[];
   duties?: string[];
   projects?: {
     image: any;
@@ -97,12 +131,19 @@ const timelineItems: {
     logo: logoFinishes,
     description: (
       <p>
-        Finishes enables architects, interior designers and building
-        professionals to collaborate and select the finishes for their projects,
-        and generate industry-standard schedules and documents quickly and
-        accurately.
+        Finishes is a new tool for the building industry to collaboratively find
+        and select the finishes for their projects. The platform is still under
+        development, incorporating feedback and improvements from two previous
+        closed-beta programs.
       </p>
     ),
+    highlights: [
+      "v0: A complete Google Firebase-centric architecture, focused on document generation and UI",
+      "v1: A rebuild and re-design of the NoSQL database schema to allow greater amounts and types of data to be saved",
+      `v2: A complete rebuild: migrating to a relational database (MySQL),
+      an API-driven transport layer (Node/Express), 
+      and rewriting the React client-side application now with Redux to accommodate the increasingly complex UI state`
+    ],
     projects: {
       image: logoFinishes,
       link: "some-link"
@@ -126,6 +167,11 @@ const timelineItems: {
     heading: `Junglefy`,
     subheading: "Senior Estimator",
     logo: logoJunglefy,
+    highlights: [
+      "Ability to quickly gain proficiency and progress in a new industry/field",
+      "Understand and contribute to a new aspect of the business: sales & business development",
+      "Practice and improve my communications skills, both up/down the business and also client facing"
+    ],
     duties: [
       "Scoping and evaluation of project proposals, with feedback to Sales and Management team",
       "Analysis of all design/plan/tender documentation, to ensure accurate and comprehensive tender submissions",
