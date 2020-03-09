@@ -10,7 +10,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Paper,
   Typography
 } from "@material-ui/core";
 import Check from "@material-ui/icons/Check";
@@ -26,14 +25,7 @@ import logoDEC from "../assets/logo-nswdec.png";
 
 export const Resume = ({ path }: { path: string }) => (
   <Fragment>
-    <Grid container alignItems="center">
-      <Grid item sm={12}>
-        <Typography variant="h1">Resume</Typography>
-      </Grid>
-      <Grid item sm={12}>
-        filters
-      </Grid>
-    </Grid>
+    <Typography variant="h1">Resume</Typography>
     <Box className="content">
       <Timeline lineColor={"#ffc400"}>
         {timelineItems.map((item, idx) => (

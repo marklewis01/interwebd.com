@@ -1,13 +1,14 @@
 {
-  "name": "testing-preact",
+  "name": "interwebd-com",
   "version": "1.0.0",
-  "description": "",
+  "description": "interwebd.com portfolio site.",
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html"
   },
-  "author": "",
+  "author": "Mark Lewis",
+  "homepage": "https://interwebd.com",
   "license": "ISC",
   "alias": {
     "react": "preact/compat",
