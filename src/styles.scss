@@ -86,15 +86,23 @@ a.link-active {
     margin-left: $nav-width;
   }
 }
+
+.nav-avatar {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: center/cover no-repeat;
+}
 .nav-item-wrapper {
   border-top: 1px solid $grey-light;
-  padding-top: 0.5rem;
+  padding: 0.5rem 8px 0;
   text-align: center;
-  width: 80%;
-  max-width: 350px;
+  // width: 80%;
+  // max-width: 350px;
 
   @media only screen and (min-width: $md) {
     text-align: right;
+    padding: 0.5rem 0 0 8px;
   }
 }
 .nav-name {
@@ -102,6 +110,7 @@ a.link-active {
   font-size: 1.75rem;
   font-weight: 300;
   margin-bottom: 0;
+  margin-top: 2rem;
   text-align: center;
 
   @media only screen and (min-width: $sm) {
@@ -129,7 +138,6 @@ a.link-active {
   @media only screen and (min-width: $md) {
     font-size: 0.95rem;
     text-align: right;
-    width: 195px;
   }
 }
 .nav-item {
