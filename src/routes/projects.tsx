@@ -167,34 +167,42 @@ export const Projects = ({ path }: { path: string }) => {
                         </Typography>
                       ) : null}
 
-                      <Grid container alignItems="center">
-                        <LanguageIcon />
-                        <Typography
-                          display="inline"
-                          variant="caption"
-                          component="p"
-                          className="project-link"
-                        >
-                          <a href={p.link.web} target="_blank">
-                            Website
-                          </a>
-                        </Typography>
+                      <Grid container spacing={4}>
+                        {p.link.web ? (
+                          <Grid item xs="auto">
+                            <Grid container alignItems="center">
+                              <LanguageIcon className="project-link-icon" />
+                              <Typography
+                                display="inline"
+                                variant="caption"
+                                component="p"
+                                className="project-link"
+                              >
+                                <a href={p.link.web} target="_blank">
+                                  Website
+                                </a>
+                              </Typography>
+                            </Grid>
+                          </Grid>
+                        ) : null}
+                        {p.link.codebase ? (
+                          <Grid item xs="auto">
+                            <Grid container alignItems="center">
+                              <CodeIcon className="project-link-icon" />
+                              <Typography
+                                display="inline"
+                                variant="caption"
+                                component="p"
+                                className="project-link"
+                              >
+                                <a href={p.link.codebase} target="_blank">
+                                  Codebase
+                                </a>
+                              </Typography>
+                            </Grid>
+                          </Grid>
+                        ) : null}
                       </Grid>
-                      {p.link.codebase ? (
-                        <Grid container alignItems="center">
-                          <CodeIcon />
-                          <Typography
-                            display="inline"
-                            variant="caption"
-                            component="p"
-                            className="project-link"
-                          >
-                            <a href={p.link.codebase} target="_blank">
-                              Codebase
-                            </a>
-                          </Typography>
-                        </Grid>
-                      ) : null}
 
                       <Typography
                         variant="body1"

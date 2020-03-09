@@ -208,6 +208,10 @@ a.link-active {
 h5.project-section-heading {
   margin: 1rem 0 0.5rem;
 }
+.project-link-icon {
+  color: $grey-main;
+  padding-right: 5px;
+}
 .project-link,
 h4.project-subtitle {
   padding: 8px 0;
@@ -231,6 +235,14 @@ p.stack-area {
   margin-top: 5px;
   text-transform: capitalize;
   // width: 250px;
+}
+li .resume-icon {
+  color: $grey-main;
+  padding-right: 10px;
+  min-width: unset;
+}
+.highlight span {
+  font-weight: 500;
 }
 .stack-area-chip {
   margin: 4px;
