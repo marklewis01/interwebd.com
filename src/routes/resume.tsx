@@ -10,7 +10,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Paper,
   Typography
 } from "@material-ui/core";
 import Check from "@material-ui/icons/Check";
