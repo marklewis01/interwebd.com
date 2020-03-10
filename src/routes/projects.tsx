@@ -145,7 +145,7 @@ export const Projects = ({ path }: { path: string }) => {
                   xl={4}
                   className="timeline--animate entry bounce-in"
                 >
-                  <Card variant="elevation" className="project-card"elevation={2} >
+                  <Card variant="elevation" className="project-card" >
                     <CardMedia
                       className="project-card-media"
                       image={
@@ -195,7 +195,7 @@ export const Projects = ({ path }: { path: string }) => {
                                 
                               >
                                 <a href={p.link.web} target="_blank">
-                                  Website
+                                  Live Site
                                 </a>
                               </Typography>
                             </Grid>
