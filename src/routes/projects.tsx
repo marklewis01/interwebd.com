@@ -72,9 +72,28 @@ type StackTech = typeof stackTech[number];
 export const Projects = ({ path }: { path: string }) => {
   const [filters, setFilters] = useState<string[]>([]);
 
-  const handleChange = (event: React.ChangeEvent<{}>, value: string[]) => {
-    setFilters(value);
+  const handleChange = (
+    event: React.ChangeEvent<{}>,
+    value: string | string[]
+  ) => {
+    if (typeof value === "string") {
+      if (filters.includes(value)) {
+        // remove from filters
+        setFilters((prevState: string[]) => {
+          return prevState.filter( tech => tech !== value)
+        })
+      } else {
+        // add to filters
+        setFilters((prevState: string[]) => {
+          return prevState.concat(value);
+      }
+      });
+    } else {
+      setFilters(value);
+    }
   };
+
+  console.log("filters", filters);
 
   return (
     <Fragment>
@@ -98,6 +117,7 @@ export const Projects = ({ path }: { path: string }) => {
                 label="Filter projects by technology"
               />
             )}
+            value={filters}
           />
         </Grid>
       </Grid>
@@ -226,11 +246,23 @@ export const Projects = ({ path }: { path: string }) => {
                                     <Chip
                                       key={idx}
                                       size="small"
-                                      variant="outlined"
+                                      variant={
+                                        filters.includes(tech)
+                                          ? "default"
+                                          : "outlined"
+                                      }
+                                      clickable
+                                      onClick={e => handleChange(e, tech)}
                                       label={tech
                                         .replace(" ", "-")
                                         .toLowerCase()}
                                       className="stack-area-chip"
+                                      color={
+                                        filters.includes(tech)
+                                          ? "secondary"
+                                          : undefined
+                                      }
+                                      title={`Add ${tech} to filter`}
                                     />
                                   ))}
                               </Grid>
