@@ -145,7 +145,7 @@ export const Projects = ({ path }: { path: string }) => {
                   xl={4}
                   className="timeline--animate entry bounce-in"
                 >
-                  <Card variant="outlined" className="project-card">
+                  <Card variant="elevation" className="project-card"elevation={2} >
                     <CardMedia
                       className="project-card-media"
                       image={
@@ -176,21 +176,23 @@ export const Projects = ({ path }: { path: string }) => {
                     </Grid>
                     <CardContent className="project-card-content">
                       {p.subtitle ? (
-                        <Typography variant="h4" className="project-subtitle">
+                        <Grid container className="project-card-section">
+                        <Typography variant="h4">
                           {p.subtitle}
                         </Typography>
+                        </Grid>
                       ) : null}
 
-                      <Grid container spacing={4}>
+                      <Grid container className="project-card-section">
                         {p.link.web ? (
-                          <Grid item xs="auto">
+                          <Grid item xs="auto" className="project-link">
                             <Grid container alignItems="center">
                               <LanguageIcon className="project-link-icon" />
                               <Typography
                                 display="inline"
                                 variant="caption"
                                 component="p"
-                                className="project-link"
+                                
                               >
                                 <a href={p.link.web} target="_blank">
                                   Website
@@ -218,12 +220,15 @@ export const Projects = ({ path }: { path: string }) => {
                         ) : null}
                       </Grid>
 
+                      <Grid container className="project-card-section">
                       <Typography
                         variant="body1"
                         className="project-description"
                       >
                         {p.description}
                       </Typography>
+
+                      </Grid>
 
                       {p.stack ? (
                         <Grid container className="project-section-heading">
@@ -256,13 +261,13 @@ export const Projects = ({ path }: { path: string }) => {
                                       label={tech
                                         .replace(" ", "-")
                                         .toLowerCase()}
-                                      className="stack-area-chip"
+                                      className={filters.includes(tech) ? "stack-area-chip selected" : "stack-area-chip"}
                                       color={
                                         filters.includes(tech)
                                           ? "secondary"
                                           : undefined
                                       }
-                                      title={`Add ${tech} to filter`}
+                                      title={filters.includes(tech) ? `Remove ${tech} from filter` : `Filter projects by ${tech}`}
                                     />
                                   ))}
                               </Grid>
