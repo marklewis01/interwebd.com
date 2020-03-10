@@ -27,7 +27,7 @@ import gatsbyImg from "../assets/projects/gatsby-hero.png";
 import interwebdImg from "../assets/projects/interwebd-hero.png";
 
 let stackTech = [
-  "Authentication",
+  "Auth",
   "CSS",
   "Customized Theme",
   "Divi",
@@ -82,7 +82,7 @@ export const Projects = ({ path }: { path: string }) => {
         <Grid item xs={12} sm={6} lg>
           <Typography variant="h1">Projects</Typography>
         </Grid>
-        <Grid item xs={12} sm={6} lg="4">
+        <Grid item xs={12} sm={6} lg={4}>
           <Autocomplete
             multiple={true}
             id="tech-filters"
@@ -122,45 +122,39 @@ export const Projects = ({ path }: { path: string }) => {
                   item
                   xs={12}
                   sm={6}
-                  lg={4}
+                  xl={4}
                   className="timeline--animate entry bounce-in"
                 >
                   <Card variant="outlined" className="project-card">
-                    <a
-                      href={p.link.web}
-                      target="_blank"
-                      title={`Open ${p.title} in new tab`}
+                    <CardMedia
+                      className="project-card-media"
+                      image={
+                        p.image || "https://source.unsplash.com/random/800x500"
+                      }
+                    />
+
+                    <Grid
+                      container
+                      alignItems="center"
+                      className="project-title-wrapper"
                     >
-                      <CardMedia
-                        className="project-card-media"
-                        image={
-                          p.image ||
-                          "https://source.unsplash.com/random/800x500"
-                        }
-                      />
-                    </a>
-                    <CardContent className="project-card-content">
-                      <Grid
-                        container
-                        alignItems="center"
-                        className="project-title-wrapper"
+                      <Typography
+                        display="inline"
+                        variant="h3"
+                        className="project-title"
                       >
-                        <Typography
-                          display="inline"
-                          variant="h3"
-                          className="project-title"
-                        >
-                          {p.title}
-                        </Typography>
-                        {p.type ? (
-                          <Chip
-                            label={p.type}
-                            size="small"
-                            color="secondary"
-                            classes={{ colorSecondary: "project-type-chip" }}
-                          />
-                        ) : null}
-                      </Grid>
+                        {p.title}
+                      </Typography>
+                      {p.type ? (
+                        <Chip
+                          label={p.type}
+                          size="small"
+                          color="secondary"
+                          classes={{ colorSecondary: "project-type-chip" }}
+                        />
+                      ) : null}
+                    </Grid>
+                    <CardContent className="project-card-content">
                       {p.subtitle ? (
                         <Typography variant="h4" className="project-subtitle">
                           {p.subtitle}
@@ -273,7 +267,7 @@ const projects: Project[] = [
     type: "website"
   },
   {
-    title: "Finishes - Public Marketing Site",
+    title: "Finishes",
     subtitle: "Customised WordPress site using the Divi theme-builder",
     link: {
       web: "https://finishes.app"
@@ -287,7 +281,7 @@ const projects: Project[] = [
     type: "website"
   },
   {
-    title: "Finishes - Application",
+    title: "Finishes - Platform",
     subtitle:
       "A custom SaaS solution for material selection in the construction industry",
     link: {
@@ -307,7 +301,7 @@ const projects: Project[] = [
       ],
       backend: [
         "Firebase",
-        "Authentication",
+        "Auth",
         "Firestore",
         "Storage",
         "TypeScript",
@@ -344,7 +338,7 @@ const projects: Project[] = [
       "A starter template with authentication, login and protected routes.",
     stack: {
       frontend: ["Unstated.js", "Material-UI"],
-      backend: ["Firebase", "Authentication", "Firestore"]
+      backend: ["Firebase", "Auth", "Firestore"]
     },
     type: "template"
   },

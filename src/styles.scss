@@ -93,6 +93,11 @@ a.link-active {
   width: 150px;
   border-radius: 50%;
   background: center/cover no-repeat;
+  margin-right: 18px;
+
+  @media only screen and (min-width: $md) {
+    margin-right: unset;
+  }
 }
 .nav-item-wrapper {
   border-top: 1px solid $grey-light;
@@ -200,6 +205,7 @@ a.link-active {
   height: 250px;
   box-shadow: 0px -5px 4px 2px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  z-index: 1;
 }
 .project-description {
   flex-grow: 1;
@@ -212,12 +218,15 @@ h5.project-section-heading {
   color: $grey-main;
   padding-right: 5px;
 }
-.project-link,
+
 h4.project-subtitle {
-  padding: 8px 0;
+  padding: 2px 0 14px;
 }
 .project-title-wrapper {
-  margin-bottom: 8px;
+  background-color: $grey-extra-light;
+  color: $grey-main;
+  padding: 20px 16px 13px;
+  border-bottom: 2px solid #e0e0e0;
 }
 h3.project-title {
   margin-right: 1rem;
