@@ -183,6 +183,15 @@ a.link-active {
     }
   }
 }
+.neon-wrapper {
+  position: fixed;
+  top: 30px;
+  left: 25px;
+  display: none;
+  @media only screen and (min-width: $md) {
+    display: inline;
+  }
+}
 
 .card {
   padding: 12px 18px;

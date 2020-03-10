@@ -1,0 +1,116 @@
+@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
+:root {
+  /* Set neon color */
+  --neon-text-color: #08f;
+  --neon-border-color: rgb(255, 0, 0);
+  --swing-delay: 2s;
+}
+
+.dark-back {
+  background-color: #021627e0;
+  border-radius: 20px;
+  padding: 4px;
+}
+
+.neon {
+  color: #00ffe7;
+  border: 2px solid #ffc400;
+  font-size: 30px;
+  font-weight: 300;
+  font-style: italic;
+  padding: 14px 28px;
+  border-radius: 16px;
+  text-transform: uppercase;
+  animation: flicker 1.5s infinite alternate;
+}
+
+.neon::-moz-selection {
+  background-color: var(--neon-border-color);
+  color: var(--neon-text-color);
+}
+
+.neon::selection {
+  background-color: var(--neon-border-color);
+  color: var(--neon-text-color);
+}
+
+.neon:focus {
+  outline: none;
+}
+
+.swing {
+  animation-name: swing;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 3s;
+  transform-origin: center -20px;
+  float: left;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.swing img {
+  border: 5px solid #f8f8f8;
+  display: block;
+}
+.swing:after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #424242;
+  top: -12px;
+  left: 46%;
+  border-bottom: none;
+  border-right: none;
+  transform: rotate(45deg);
+}
+/* nail */
+.swing:before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: -18px;
+  left: 51%;
+  z-index: 5;
+  border-radius: 50% 50%;
+  background: #000;
+}
+
+/* Animate neon flicker */
+@keyframes flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    text-shadow: -1px -1px 0 #fff, 1px 1px 2px #fff,
+      0 0 8px var(--neon-text-color), 0 0 8px var(--neon-text-color),
+      0 0 10px var(--neon-text-color), 0 0 12px var(--neon-text-color),
+      0 0 18px var(--neon-text-color);
+
+    box-shadow: 0 0 8px #fff, inset 0 0 2px #fff,
+      0 0 12px var(--neon-border-color), inset 0 0 6px var(--neon-border-color),
+      0 0 20px var(--neon-border-color), inset 0 0 12px var(--neon-border-color);
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+    box-shadow: none;
+  }
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}

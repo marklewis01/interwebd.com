@@ -7,6 +7,9 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 
+// custom comps
+import { Neon } from "../Neon";
+
 // assets
 import ml_photo from "../../assets/mlewis_pic_sketch.png";
 
@@ -45,6 +48,9 @@ export const Nav = () => {
 
   return (
     <div className="header">
+      <div className="neon-wrapper">
+        <Neon text="For Hire" />
+      </div>
       <div
         style={{ background: `center/cover no-repeat url(${ml_photo})` }}
         className="nav-avatar"
