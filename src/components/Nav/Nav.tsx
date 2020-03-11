@@ -60,8 +60,8 @@ export const Nav = () => {
     <div className="header">
       <div className="neon-wrapper">
         <Neon text="For Hire" power={forHire} />
+        <LightSwitch checked={forHire} onClick={handleLightSwitch} switchOnly />
       </div>
-      <LightSwitch checked={forHire} onClick={handleLightSwitch} switchOnly />
       <div
         style={{ background: `center/cover no-repeat url(${ml_photo})` }}
         className="nav-avatar"

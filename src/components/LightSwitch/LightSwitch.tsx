@@ -14,7 +14,7 @@ export const LightSwitch = ({
   disabled?: boolean;
   switchOnly?: boolean;
 }) => (
-  <div style={{ position: "absolute", top: 50, left: 235 }}>
+  <div id="light-switch-root">
     <input
       type="checkbox"
       id="light-switch"
