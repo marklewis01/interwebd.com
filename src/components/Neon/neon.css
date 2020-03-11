@@ -2,7 +2,7 @@
 
 :root {
   /* Set neon color */
-  --neon-text-color: #08f;
+  --neon-text-color: rgb(0, 249, 12);
   --neon-border-color: rgb(255, 0, 0);
   --swing-delay: 2s;
 }
@@ -12,9 +12,14 @@
   border-radius: 20px;
   padding: 4px;
 }
+.dark-back-off {
+  background-color: #1f2427e0;
+  border-radius: 20px;
+  padding: 4px;
+}
 
 .neon {
-  color: #00ffe7;
+  color: #8bcc8d;
   border: 2px solid #ffc400;
   font-size: 30px;
   font-weight: 300;
@@ -22,7 +27,14 @@
   padding: 14px 28px;
   border-radius: 16px;
   text-transform: uppercase;
+}
+.neon-on {
   animation: flicker 1.5s infinite alternate;
+}
+.neon-off {
+  animation: unset;
+  color: #8bcc8d;
+  border-color: #8a7a45;
 }
 
 .neon::-moz-selection {
@@ -38,22 +50,7 @@
 .neon:focus {
   outline: none;
 }
-
-.swing {
-  animation-name: swing;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-duration: 3s;
-  transform-origin: center -20px;
-  float: left;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-}
-.swing img {
-  border: 5px solid #f8f8f8;
-  display: block;
-}
-.swing:after {
+.neon:after {
   content: "";
   position: absolute;
   width: 25px;
@@ -66,7 +63,7 @@
   transform: rotate(45deg);
 }
 /* nail */
-.swing:before {
+.neon:before {
   content: "";
   position: absolute;
   width: 5px;
@@ -76,6 +73,21 @@
   z-index: 5;
   border-radius: 50% 50%;
   background: #000;
+}
+
+.swing {
+  animation-name: swing;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 4s;
+  transform-origin: center -20px;
+  float: left;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.swing img {
+  border: 5px solid #f8f8f8;
+  display: block;
 }
 
 /* Animate neon flicker */
