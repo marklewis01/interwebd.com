@@ -28,13 +28,10 @@ import interwebdImg from "../assets/projects/interwebd-hero.png";
 
 let stackTech = [
   "Auth",
-  "CSS",
   "Customized Theme",
-  "Divi",
   "Firebase",
   "Firestore",
   "Gatsby",
-  "Illustrations",
   "JSS",
   "Material-UI",
   "Node",
@@ -42,7 +39,6 @@ let stackTech = [
   "React",
   "React-Router",
   "Redux",
-  "Responsive",
   "SASS",
   "Storage",
   "TypeScript",
@@ -313,7 +309,7 @@ const projects: Project[] = [
     description:
       "A personal project to build my first SaaS application. First version of application built with Node.js with Express, Passport.js, MongoDB, and a HTML/CSS/jQuery front-end.",
     stack: {
-      elements: ["WordPress", "Responsive", "Divi", "CSS", "Illustrations"]
+      elements: ["WordPress"]
     },
     type: "website"
   },

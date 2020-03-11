@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { Link } from "preact-router/match";
+import { useState } from "preact/hooks";
 
 // Mui
 import { IconButton, Typography } from "@material-ui/core";
@@ -9,17 +10,24 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 
 // custom comps
 import { Neon } from "../Neon";
+import { LightSwitch } from "../LightSwitch";
 
 // assets
 import ml_photo from "../../assets/mlewis_pic_sketch.png";
 
 export const Nav = () => {
+  const [forHire, setForHire] = useState(true);
+
   const handleClick = (s: string) => {
     s.startsWith("mailto")
       ? (window.location.href = s)
       : window.open(s, "_blank");
   };
 
+  const handleLightSwitch = () => {
+    console.log("clicked");
+    setForHire(!forHire);
+  };
   const contactLinks = [
     {
       icon: <MailOutlineIcon />,
@@ -46,11 +54,14 @@ export const Nav = () => {
     }
   ];
 
+  console.log("for", forHire);
+
   return (
     <div className="header">
       <div className="neon-wrapper">
-        <Neon text="For Hire" />
+        <Neon text="For Hire" power={forHire} />
       </div>
+      <LightSwitch checked={forHire} onClick={handleLightSwitch} />
       <div
         style={{ background: `center/cover no-repeat url(${ml_photo})` }}
         className="nav-avatar"
