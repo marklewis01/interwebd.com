@@ -1,14 +1,10 @@
-*,
-*:before,
-*:after {
-  transition: 0.2s ease-in-out;
+#light-switch {
+  display: none;
 }
 
-#light-switch {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
+.switch:before,
+.switch:after {
+  transition: 0.2s ease-in-out;
 }
 
 #light-switch:checked ~ #light-switch-label {
@@ -48,6 +44,7 @@
   box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
+
 #light-switch-label .switch {
   cursor: pointer;
   height: 34px;
@@ -92,7 +89,7 @@
   border-radius: 0 0 5px 5px;
 }
 
-.screw {
+#light-switch-label .screw {
   position: absolute;
   height: 6px;
   width: 6px;
@@ -104,7 +101,7 @@
   box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-.screw:before {
+#light-switch-label .screw:before {
   content: "";
   display: block;
   position: absolute;
@@ -114,9 +111,15 @@
   margin-left: -1px;
   background: rgba(0, 0, 0, 0.2);
 }
-.screw:first-of-type {
+#light-switch-label .screw:first-of-type {
   top: 4px;
 }
-.screw:last-of-type {
+#light-switch-label .screw:last-of-type {
   bottom: 4px;
+}
+
+#light-switch ~ #light-switch-label.switch-only {
+  background-color: unset;
+  box-shadow: unset;
+  border: unset;
 }
