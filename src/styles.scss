@@ -190,7 +190,13 @@ a.link-active {
   display: none;
   @media only screen and (min-width: $md) {
     display: inline;
+    background-color: $grey-extra-light;
   }
+}
+#light-switch-root {
+  position: absolute;
+  bottom: -15px;
+  right: -70px;
 }
 
 .card {
