@@ -14,7 +14,6 @@ import { Resume, Projects } from "./routes";
 // styles
 import "./styles.scss";
 
-const Home = () => <Typography variant="h2">Home Page</Typography>;
 const Error = () => <h3>Error</h3>;
 
 export default function App() {
