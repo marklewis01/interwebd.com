@@ -89,7 +89,6 @@ export const Projects = ({ path }: { path: string }) => {
     }
   };
 
-  console.log("filters", filters);
 
   return (
     <Fragment>
@@ -141,7 +140,7 @@ export const Projects = ({ path }: { path: string }) => {
                   xl={4}
                   className="timeline--animate entry bounce-in"
                 >
-                  <Card variant="elevation" className="project-card" >
+                  <Card className="project-card" >
                     <CardMedia
                       className="project-card-media"
                       image={

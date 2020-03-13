@@ -45,7 +45,6 @@ export const Nav = () => {
   };
 
   const handleLightSwitch = () => {
-    console.log("clicked");
     setForHire(!forHire);
   };
   const contactLinks = [
@@ -81,8 +80,6 @@ export const Nav = () => {
       path: "/resume"
     }
   ];
-
-  console.log("for", forHire);
 
   return (
     <div className="header">
