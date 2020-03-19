@@ -4,11 +4,13 @@ import { useState } from "preact/hooks";
 // Mui
 import {
   Box,
+  Button,
   Card,
   CardContent,
   CardMedia,
   Chip,
   Grid,
+  Modal,
   TextField,
   Typography
 } from "@material-ui/core";
@@ -25,6 +27,14 @@ import finishesApp from "../assets/projects/finishes-app-v1.png";
 import firebaseImg from "../assets/projects/firebase-starter-hero.png";
 import gatsbyImg from "../assets/projects/gatsby-hero.png";
 import interwebdImg from "../assets/projects/interwebd-hero.png";
+
+// Styles
+import {useTheme } from '@material-ui/core/styles'
+
+// Image Carousel
+import { autoPlay } from 'react-swipeable-views-utils';
+import SwipeableViews from 'react-swipeable-views';
+const AutoPlaySwipeableViews =  autoPlay(SwipeableViews);
 
 let stackTech = [
   "Auth",
@@ -48,10 +58,11 @@ let stackTech = [
 
 // TS
 interface Project {
+  id: number;
   title: string;
   subtitle?: string;
   description: string;
-  image?: any;
+  thumbImage?: any;
   link: {
     codebase?: string;
     web?: string;
@@ -66,9 +77,54 @@ type StackAreas = "frontend" | "backend" | "elements";
 type StackTech = typeof stackTech[number];
 
 export const Projects = ({ path }: { path: string }) => {
+  const theme = useTheme();
   const [filters, setFilters] = useState<string[]>([]);
+  const [project, setProject] = useState<number | null>(1);
+  const [activeStep, setActiveStep] = useState<number>(0);
+  const [pauseAutoPlay, setPauseAutoPlay] = useState(false)
+  
 
-  const handleChange = (
+  const tutorialSteps = [
+  {
+    label: 'San Francisco – Oakland Bay Bridge, United States',
+    imgPath:
+      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+  },
+  {
+    label: 'Bird',
+    imgPath:
+      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+  },
+  {
+    label: 'Bali, Indonesia',
+    imgPath:
+      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
+  },
+  {
+    label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
+    imgPath:
+      'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
+  },
+  {
+    label: 'Goč, Serbia',
+    imgPath:
+      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+  },
+];
+
+  const handleNext = () => {
+    setActiveStep(prevActiveStep => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep(prevActiveStep => prevActiveStep - 1);
+  };
+
+  const handleStepChange = (step: number) => {
+    setActiveStep(step);
+  };
+  
+  const handleChangeFilters = (
     event: React.ChangeEvent<{}>,
     value: string | string[]
   ) => {
@@ -89,7 +145,7 @@ export const Projects = ({ path }: { path: string }) => {
     }
   };
 
-
+  console.log(pauseAutoPlay)
   return (
     <Fragment>
       <Grid container justify="space-between" alignItems="flex-start">
@@ -100,7 +156,7 @@ export const Projects = ({ path }: { path: string }) => {
           <Autocomplete
             multiple={true}
             id="tech-filters"
-            onChange={handleChange}
+            onChange={handleChangeFilters}
             options={stackTech}
             disableCloseOnSelect
             size="small"
@@ -144,8 +200,9 @@ export const Projects = ({ path }: { path: string }) => {
                     <CardMedia
                       className="project-card-media"
                       image={
-                        p.image || "https://source.unsplash.com/random/800x500"
-                      }
+                        p.thumbImage
+                      }                      
+                      onClick={() => setProject(p.id)}
                     />
 
                     <Grid
@@ -252,7 +309,7 @@ export const Projects = ({ path }: { path: string }) => {
                                           : "outlined"
                                       }
                                       clickable
-                                      onClick={e => handleChange(e, tech)}
+                                      onClick={e => handleChangeFilters(e, tech)}
                                       label={tech
                                         .replace(" ", "-")
                                         .toLowerCase()}
@@ -277,12 +334,44 @@ export const Projects = ({ path }: { path: string }) => {
             })}
         </Grid>
       </Box>
+      <Modal
+        // aria-labelledby="simple-modal-title"
+        // aria-describedby="simple-modal-description"
+        open={Boolean(project)}
+        onClose={() => setProject(null)}
+        className="project-modal-root"
+      >
+        <div className="project-modal">
+          <Button size="small" className="project-modal-close" onClick={() => setProject(null)}>Close</Button>
+          <div className="project-modal-contents" onMouseEnter={() => setPauseAutoPlay(true)} onMouseLeave={() => setPauseAutoPlay(false)}>
+            <AutoPlaySwipeableViews
+              autoplay={!pauseAutoPlay}
+              axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+              index={activeStep}
+              onChangeIndex={handleStepChange}
+              enableMouseEvents
+            >
+              {tutorialSteps.map((step, index) => (
+                <div key={step.label}>
+                  {Math.abs(activeStep - index) <= 2 ? (
+                    <img className="project-carousel-img" src={step.imgPath} alt={step.label} />
+                  ) : null}
+                </div>
+              ))}
+            </AutoPlaySwipeableViews>
+            <p id="simple-modal-description">
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            </p>
+          </div>
+        </div>
+      </Modal>
     </Fragment>
   );
 };
 
 const projects: Project[] = [
   {
+    id: 1,
     title: "Interwebd",
     subtitle: "Getting to know PreactJS. This very site you're on!",
     description: `A portfolio site to showcase some of my skills and a chance to get to know Preact.js.
@@ -292,19 +381,20 @@ const projects: Project[] = [
       codebase: "https://github.com/marklewis01/interwebd.com",
       web: "https://interwebd.com"
     },
-    image: interwebdImg,
+    thumbImage: interwebdImg,
     stack: {
       frontend: ["Preact", "Material-UI", "TypeScript"]
     },
     type: "website"
   },
   {
+    id: 2,
     title: "Finishes",
     subtitle: "Customised WordPress site using the Divi theme-builder",
     link: {
       web: "https://finishes.app"
     },
-    image: finishesImg,
+    thumbImage: finishesImg,
     description:
       "A personal project to build my first SaaS application. First version of application built with Node.js with Express, Passport.js, MongoDB, and a HTML/CSS/jQuery front-end.",
     stack: {
@@ -313,13 +403,14 @@ const projects: Project[] = [
     type: "website"
   },
   {
+    id: 3, 
     title: "Finishes - Platform",
     subtitle:
       "A custom SaaS solution for material selection in the construction industry",
     link: {
       web: "https://my.finishes.app"
     },
-    image: finishesApp,
+    thumbImage: finishesApp,
     description:
       "A personal project to build my first SaaS application. First version of application built with Node.js with Express, Passport.js, MongoDB, and a HTML/CSS/jQuery front-end.",
     stack: {
@@ -343,13 +434,14 @@ const projects: Project[] = [
     type: "web application"
   },
   {
+    id: 4,
     title: "Simple GatsbyJS Website",
     subtitle: "Getting to know GatsbyJS and Server-side-rendering",
     link: {
       codebase: "https://github.com/marklewis01/simple-gatsby-site",
       web: "https://marklewis01.github.io/simple-gatsby-site"
     },
-    image: gatsbyImg,
+    thumbImage: gatsbyImg,
     description:
       "Getting to know server-side rendering. GatsbyJS static generated site",
     stack: {
@@ -358,6 +450,7 @@ const projects: Project[] = [
     type: "template"
   },
   {
+    id: 5,
     title: "Firebase Starter",
     subtitle:
       "A starter template with authentication, protected routes, and some local state management.",
@@ -365,7 +458,7 @@ const projects: Project[] = [
       codebase: "https://github.com/marklewis01/react-materialui-starter",
       web: "https://material-ui-mobx-starter.firebaseapp.com"
     },
-    image: firebaseImg,
+    thumbImage: firebaseImg,
     description:
       "A starter template with authentication, login and protected routes.",
     stack: {
@@ -375,12 +468,13 @@ const projects: Project[] = [
     type: "template"
   },
   {
+    id: 6,
     title: "Junglefy Pty Ltd",
     subtitle: "A customized WordPress site",
     link: {
       web: "https://junglefy.com.au"
     },
-    image: junglefyImg,
+    thumbImage: junglefyImg,
     description:
       "Based on Client-supplied UI designs and graphics, I configured an off-the-shelf WordPress theme to the Client's specification.",
     stack: {

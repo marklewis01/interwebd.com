@@ -220,7 +220,14 @@ a.link-active {
 }
 .project-card-media {
   height: 250px;
-  // z-index: 1;
+  cursor: pointer;
+}
+.project-carousel-img {
+  height: 255px;
+  display: block;
+  max-width: 400px;
+  overflow: hidden;
+  width: 100%;
 }
 .project-description {
   flex-grow: 1;
@@ -236,7 +243,36 @@ h5.project-section-heading {
   color: $grey-main;
   padding-right: 5px;
 }
-
+.project-modal-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button.project-modal-close {
+  color: $grey-main;
+  padding: 12px 6px;
+  float: right;
+  font-size: 12px;
+  line-height: 1;
+  z-index: 1;
+}
+.project-modal {
+  position: relative;
+  width: 600px;
+  max-width: 90vw;
+  height: 400px;
+  max-height: 80vh;
+  background: white;
+}
+.project-modal-contents {
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
 .project-title-wrapper {
   background-color: $grey-extra-light;
   color: $text;
