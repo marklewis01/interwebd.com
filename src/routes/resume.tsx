@@ -219,7 +219,7 @@ const timelineItems: {
     ]
   },
   {
-    date: "Aug 2010 - Sep 2013",
+    date: "Aug 2012 - Sep 2013",
     heading: `Platinum Direct Finance Australia`,
     subheading: "IT Consultant [Contract Role]",
     logo: logoPDFA,

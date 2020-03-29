@@ -9,7 +9,7 @@ import { Nav } from "./components/Nav";
 import ScrollToTop from "./components/ScrollToTop";
 
 // routes/pages
-import { Resume, Projects } from "./routes";
+import { Resume, Resume1, Projects } from "./routes";
 
 // styles
 import "./styles.scss";
@@ -26,8 +26,9 @@ export default function App() {
       <Nav />
       <div className="main">
         <Router onChange={handleRouteChange}>
-          <Projects path="/" />
+          <Projects path="/projects" />
           <Resume path="resume" />
+          <Resume1 path="/" />
           <Error default />
         </Router>
         <ScrollToTop />

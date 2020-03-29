@@ -62,7 +62,6 @@ interface Project {
   title: string;
   subtitle?: string;
   description: string;
-  thumbImage?: any;
   link: {
     codebase?: string;
     web?: string;
@@ -71,6 +70,11 @@ interface Project {
   stack?: {
     [key in StackAreas]?: StackTech[];
   };
+  images?: {
+    label: string;
+    imgPath: string;
+  }[]
+  thumbImage?: any;
   type?: "website" | "web application" | "mobile app" | "template";
 }
 type StackAreas = "frontend" | "backend" | "elements";
@@ -79,7 +83,7 @@ type StackTech = typeof stackTech[number];
 export const Projects = ({ path }: { path: string }) => {
   const theme = useTheme();
   const [filters, setFilters] = useState<string[]>([]);
-  const [project, setProject] = useState<number | null>(1);
+  const [project, setProject] = useState<Project | null>(null);
   const [activeStep, setActiveStep] = useState<number>(0);
   const [pauseAutoPlay, setPauseAutoPlay] = useState(false)
   
@@ -145,7 +149,6 @@ export const Projects = ({ path }: { path: string }) => {
     }
   };
 
-  console.log(pauseAutoPlay)
   return (
     <Fragment>
       <Grid container justify="space-between" alignItems="flex-start">
@@ -198,11 +201,11 @@ export const Projects = ({ path }: { path: string }) => {
                 >
                   <Card className="project-card" >
                     <CardMedia
-                      className="project-card-media"
+                      className={p.images ? "project-card-media project-card-media-more" : "project-card-media"}
                       image={
                         p.thumbImage
                       }                      
-                      onClick={() => setProject(p.id)}
+                      onClick={p.images ? () => setProject(p) : undefined}
                     />
 
                     <Grid
@@ -334,37 +337,44 @@ export const Projects = ({ path }: { path: string }) => {
             })}
         </Grid>
       </Box>
-      <Modal
-        // aria-labelledby="simple-modal-title"
-        // aria-describedby="simple-modal-description"
-        open={Boolean(project)}
-        onClose={() => setProject(null)}
-        className="project-modal-root"
-      >
-        <div className="project-modal">
-          <Button size="small" className="project-modal-close" onClick={() => setProject(null)}>Close</Button>
-          <div className="project-modal-contents" onMouseEnter={() => setPauseAutoPlay(true)} onMouseLeave={() => setPauseAutoPlay(false)}>
-            <AutoPlaySwipeableViews
-              autoplay={!pauseAutoPlay}
-              axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-              index={activeStep}
-              onChangeIndex={handleStepChange}
-              enableMouseEvents
-            >
-              {tutorialSteps.map((step, index) => (
-                <div key={step.label}>
-                  {Math.abs(activeStep - index) <= 2 ? (
-                    <img className="project-carousel-img" src={step.imgPath} alt={step.label} />
-                  ) : null}
+      { project && project.images ? (
+        <Modal
+          // aria-labelledby="simple-modal-title"
+          // aria-describedby="simple-modal-description"
+          open={Boolean(project )}
+          onClose={() => setProject(null)}
+          className="project-modal-root"
+        >
+          <div className="project-modal">
+            <Button size="small" className="project-modal-close" onClick={() => setProject(null)}>Close</Button>
+            <Grid container>
+              <Grid item xs={12} sm={8}>
+                <div className="project-modal-contents" onMouseEnter={() => setPauseAutoPlay(true)} onMouseLeave={() => setPauseAutoPlay(false)}>
+                  <AutoPlaySwipeableViews
+                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                    index={activeStep}
+                    onChangeIndex={handleStepChange}
+                    enableMouseEvents
+                  >
+                    {project.images.map((step, index) => (
+                      <div key={step.label}>
+                        {Math.abs(activeStep - index) <= 2 ? (
+                          <img className="project-carousel-img" src={step.imgPath} alt={step.label} />
+                        ) : null}
+                      </div>
+                    ))}
+                  </AutoPlaySwipeableViews>
                 </div>
-              ))}
-            </AutoPlaySwipeableViews>
-            <p id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </p>
+              </Grid>
+              <Grid item xs={12} sm={4} style={{padding: 12}}>
+              <p id="simple-modal-description">
+                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              </p>
+              </Grid>
+            </Grid>
           </div>
-        </div>
-      </Modal>
+        </Modal>
+      ) : null}
     </Fragment>
   );
 };
@@ -381,10 +391,37 @@ const projects: Project[] = [
       codebase: "https://github.com/marklewis01/interwebd.com",
       web: "https://interwebd.com"
     },
-    thumbImage: interwebdImg,
+    images: [
+      {
+        label: 'San Francisco – Oakland Bay Bridge, United States',
+        imgPath:
+          'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+      },
+      {
+        label: 'Bird',
+        imgPath:
+          'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+      },
+      {
+        label: 'Bali, Indonesia',
+        imgPath:
+          'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
+      },
+      {
+        label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
+        imgPath:
+          'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
+      },
+      {
+        label: 'Goč, Serbia',
+        imgPath:
+          'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+      },
+    ],
     stack: {
       frontend: ["Preact", "Material-UI", "TypeScript"]
     },
+    thumbImage: interwebdImg,
     type: "website"
   },
   {
