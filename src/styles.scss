@@ -107,12 +107,6 @@ h3 {
   }
   .social-links-wrapper {
     border-top: 1px solid $grey-light;
-    // padding: 0.5rem 8px 0;
-    // text-align: center;
-    // @media only screen and (min-width: $md) {
-    //   text-align: right;
-    //   padding: 0.5rem 0 0 8px;
-    // }
   }
   #light-switch-root {
     position: absolute;
@@ -204,6 +198,178 @@ h3 {
     }
   }
 }
+
+/**
+ * Resume
+ */
+
+.resume {
+  .header {
+    border-bottom: 2px solid $grey-main;
+    display: none;
+    @media print {
+      display: inline;
+    }
+  }
+
+  .section {
+    margin-bottom: 3rem;
+  }
+
+  .section-heading {
+    border-bottom: 1px solid $secondary-color;
+    color: $grey-main;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 2;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+
+  .lhs-col {
+    width: 100%;
+    @media only screen and (min-width: $md) {
+      width: 300px;
+    }
+  }
+
+  .experience {
+    input[type="checkbox"] {
+      display: none;
+    }
+    .bullet {
+      font-size: 1rem;
+    }
+    .company-details {
+      margin-bottom: 1rem;
+      align-items: center;
+      @media only screen and (min-width: $md) {
+        align-items: unset;
+      }
+    }
+    .description {
+      border-left: 1px solid $grey-light;
+      margin: 12px 0 0 2px;
+      padding-left: 12px;
+      max-height: 0px;
+      overflow: hidden;
+      transition: max-height 0.25s ease-in-out;
+    }
+
+    .job {
+      margin: 1rem 0 2rem;
+      padding: 0 12px 0 6px;
+      @media only screen and (min-width: $md) {
+        padding: unset;
+      }
+    }
+    .logo {
+      height: 50px;
+      margin: 0 8px 0 16px;
+      padding-right: 12px;
+      @media only screen and (min-width: $lg) {
+        margin: unset;
+      }
+    }
+    .title {
+      display: block;
+      cursor: pointer;
+      transition: all 0.25s ease-out;
+      &:hover {
+        color: $secondary-color;
+      }
+
+      &:before {
+        content: "";
+        display: inline-block;
+
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 5px solid currentColor;
+
+        vertical-align: middle;
+        margin-right: 0.7rem;
+        transform: translateY(-2px);
+
+        transition: transform 0.2s ease-out;
+      }
+    }
+    .toggle:checked + .title + .description {
+      max-height: 100vh;
+    }
+    .toggle:checked {
+      + .title::before {
+        transform: rotate(90deg) translateX(-3px);
+      }
+    }
+    .url a {
+      color: $secondary-color;
+      text-decoration: none;
+    }
+  }
+
+  .projects {
+    .details {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin: 1rem 0 0.5rem;
+      @media only screen and (min-width: $md) {
+        flex-direction: column;
+        margin: unset;
+      }
+    }
+    .icon {
+      font-size: 12px;
+      margin: 0 4px;
+      @media only screen and (min-width: $md) {
+        font-size: 16px;
+        margin: 2px 8px 2px 0;
+      }
+    }
+    .image-thumb {
+      background-color: $grey-extra-light;
+      border: 1px solid $grey-light;
+      padding: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .keywords {
+      font-weight: bold;
+      font-style: italic;
+    }
+    .links {
+      margin: 0;
+      text-align: right;
+      justify-content: flex-end;
+      @media only screen and (min-width: $md) {
+        flex-direction: column;
+        margin: 6px 0;
+        text-align: left;
+      }
+
+      a {
+        margin-left: 4px;
+        @media only screen and (min-width: $md) {
+          margin: 3px 0;
+        }
+      }
+      p {
+        font-size: 10px;
+        @media only screen and (min-width: $md) {
+          font-size: 14px;
+        }
+      }
+    }
+    .project {
+      margin: 1rem 0 0.5rem;
+    }
+  }
+}
+
+/**
+ * Deprecated ?
+ */
 
 .card {
   padding: 12px 18px;
@@ -313,163 +479,6 @@ div.stack-area-chip {
 
   &.selected {
     color: #fff;
-  }
-}
-
-/**
- * Resume
- */
-
-.resume {
-  .header {
-    border-bottom: 2px solid $grey-main;
-    display: none;
-    @media print {
-      display: inline;
-    }
-  }
-
-  .section {
-    margin-bottom: 3rem;
-  }
-
-  .section-heading {
-    border-bottom: 1px solid $secondary-color;
-    color: $grey-main;
-    font-size: 1.2rem;
-    font-weight: 300;
-    line-height: 2;
-    margin-bottom: 0;
-    text-transform: uppercase;
-  }
-
-  .lhs-col {
-    width: 100%;
-    @media only screen and (min-width: $md) {
-      width: 300px;
-    }
-  }
-
-  .experience {
-    input[type="checkbox"] {
-      display: none;
-    }
-    .bullet {
-      font-size: 1rem;
-    }
-    .company-details {
-      margin-bottom: 1rem;
-    }
-    .description {
-      border-left: 1px solid $grey-light;
-      margin: 12px 0 0 2px;
-      padding-left: 12px;
-      max-height: 0px;
-      overflow: hidden;
-      transition: max-height 0.25s ease-in-out;
-    }
-
-    .job {
-      margin: 1rem 0 2rem;
-      padding: 0 12px 0 6px;
-      @media only screen and (min-width: $md) {
-        padding: unset;
-      }
-    }
-    .logo {
-      height: 50px;
-      margin: 0 8px 0 16px;
-      padding-right: 12px;
-      @media only screen and (min-width: $lg) {
-        margin: unset;
-      }
-    }
-    .title {
-      display: block;
-      cursor: pointer;
-      transition: all 0.25s ease-out;
-      &:hover {
-        color: $secondary-color;
-      }
-
-      &:before {
-        content: "";
-        display: inline-block;
-
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-left: 5px solid currentColor;
-
-        vertical-align: middle;
-        margin-right: 0.7rem;
-        transform: translateY(-2px);
-
-        transition: transform 0.2s ease-out;
-      }
-    }
-    .toggle:checked + .title + .description {
-      max-height: 100vh;
-    }
-    .toggle:checked {
-      + .title::before {
-        transform: rotate(90deg) translateX(-3px);
-      }
-    }
-    .url a {
-      color: $secondary-color;
-      text-decoration: none;
-    }
-  }
-
-  .projects {
-    .details {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin: 1rem 0 0.5rem;
-      @media only screen and (min-width: $md) {
-        flex-direction: column;
-        margin: unset;
-      }
-    }
-    .icon {
-      font-size: 12px;
-      margin: 0 4px;
-      @media only screen and (min-width: $md) {
-        font-size: 16px;
-        margin: 2px 8px 2px 0;
-      }
-    }
-    .keywords {
-      font-weight: bold;
-      font-style: italic;
-    }
-    .links {
-      margin: 0;
-      text-align: right;
-      justify-content: flex-end;
-      @media only screen and (min-width: $md) {
-        flex-direction: column;
-        margin: 6px 0;
-        text-align: left;
-      }
-
-      a {
-        margin-left: 4px;
-        @media only screen and (min-width: $md) {
-          margin: 3px 0;
-        }
-      }
-      p {
-        font-size: 10px;
-        @media only screen and (min-width: $md) {
-          font-size: 14px;
-        }
-      }
-    }
-    .project {
-      margin: 1rem 0 0.5rem;
-    }
   }
 }
 

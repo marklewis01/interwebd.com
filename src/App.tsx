@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { Router } from "preact-router";
+import SimpleReactLightbox from "simple-react-lightbox";
 
 // Mui
 import { Grid, Typography } from "@material-ui/core";

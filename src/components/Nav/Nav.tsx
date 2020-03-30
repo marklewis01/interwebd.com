@@ -8,7 +8,7 @@ import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
   LocationOn as LocationIcon,
-  MailOutline as MailIcon
+  Mail as MailIcon
 } from "@material-ui/icons";
 
 // custom comps

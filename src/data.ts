@@ -1,3 +1,4 @@
+// logo assets
 import logoFinishes from "./assets/logo-finishes.png";
 import logoDD from "./assets/logo-didata.png";
 import logoInterwebd from "./assets/logo-iw.png";
@@ -5,6 +6,16 @@ import logoJunglefy from "./assets/logo-junglefy.png";
 import logoSimply from "./assets/logo-simply.png";
 import logoPDFA from "./assets/logo-pdfa.png";
 import logoDEC from "./assets/logo-nswdec.png";
+
+// project assets
+import t_fbStarter_login from "./assets/projects/thumb_material-ui-mobx-starter_login_MDPI.png";
+import t_fbStart_main from "./assets/projects/thumb_material-ui-mobx-starter_MDPI.png";
+import t_fbStart_tablet from "./assets/projects/thumb_material-ui-mobx-starter_iPad.png";
+import t_fbStart_mobile from "./assets/projects/thumb_material-ui-mobx-starter_mobile.png";
+import fbStarter_login from "./assets/projects/material-ui-mobx-starter_login_MDPI.png";
+import fbStart_main from "./assets/projects/material-ui-mobx-starter_MDPI.png";
+import fbStart_tablet from "./assets/projects/material-ui-mobx-starter_iPad.png";
+import fbStart_mobile from "./assets/projects/material-ui-mobx-starter_mobile.png";
 
 export const skills = {
   technicalSkills: {
@@ -68,6 +79,14 @@ interface IProject {
   keywords?: string[];
   codebase?: string;
   web?: string;
+  images?: {
+    caption?: string;
+    source: {
+      download?: string;
+      regular: string;
+      thumbnail?: string;
+    };
+  }[];
 }
 export const projects: IProject[] = [
   {
@@ -104,7 +123,38 @@ export const projects: IProject[] = [
       "Material-UI"
     ],
     codebase: "https://github.com/marklewis01/react-materialui-starter",
-    web: "https://material-ui-mobx-starter.firebaseapp.com"
+    web: "https://material-ui-mobx-starter.firebaseapp.com",
+    images: [
+      {
+        caption:
+          "Custom registration/login modal integrated with Firebase Authentication",
+        source: {
+          regular: fbStarter_login,
+          thumbnail: t_fbStarter_login
+        }
+      },
+      {
+        caption: "Simple page template with LHS navigation drawer",
+        source: {
+          regular: fbStart_main,
+          thumbnail: t_fbStart_main
+        }
+      },
+      {
+        caption: "Fully responsive: tablet device layout",
+        source: {
+          regular: fbStart_tablet,
+          thumbnail: t_fbStart_tablet
+        }
+      },
+      {
+        caption: "Fully responsive: mobile device layout",
+        source: {
+          regular: fbStart_mobile,
+          thumbnail: t_fbStart_mobile
+        }
+      }
+    ]
   }
 ];
 
