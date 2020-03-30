@@ -27,8 +27,8 @@ export default function App() {
       <Nav />
       <div className="main">
         <Router onChange={handleRouteChange}>
-          <Projects path="/projects" />
-          <Resume path="resume" />
+          {/* <Projects path="/projects" /> */}
+          {/* <Resume path="resume" /> */}
           <Resume1 path="/" />
           <Error default />
         </Router>
