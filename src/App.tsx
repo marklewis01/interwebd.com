@@ -9,7 +9,7 @@ import { Nav } from "./components/Nav";
 import ScrollToTop from "./components/ScrollToTop";
 
 // routes/pages
-import { Resume } from "./Resume";
+import { Resume } from "./routes";
 
 // styles
 import "./styles.scss";
