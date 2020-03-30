@@ -21,12 +21,12 @@ import CodeIcon from "@material-ui/icons/Code";
 import LanguageIcon from "@material-ui/icons/Language";
 
 // Assets
-import junglefyImg from "../assets/projects/junglefy-hero.png";
-import finishesImg from "../assets/projects/finishes-hero.png";
-import finishesApp from "../assets/projects/finishes-app-v1.png";
-import firebaseImg from "../assets/projects/firebase-starter-hero.png";
-import gatsbyImg from "../assets/projects/gatsby-hero.png";
-import interwebdImg from "../assets/projects/interwebd-hero.png";
+// import junglefyImg from "../assets/projects/junglefy-hero.png";
+// import finishesImg from "../assets/projects/finishes-hero.png";
+// import finishesApp from "../assets/projects/finishes-app-v1.png";
+// import firebaseImg from "../assets/projects/firebase-starter-hero.png";
+// import gatsbyImg from "../assets/projects/gatsby-hero.png";
+// import interwebdImg from "../assets/projects/interwebd-hero.png";
 
 // Styles
 import {useTheme } from '@material-ui/core/styles'
@@ -421,7 +421,7 @@ const projects: Project[] = [
     stack: {
       frontend: ["Preact", "Material-UI", "TypeScript"]
     },
-    thumbImage: interwebdImg,
+    // thumbImage: interwebdImg,
     type: "website"
   },
   {
@@ -431,7 +431,7 @@ const projects: Project[] = [
     link: {
       web: "https://finishes.app"
     },
-    thumbImage: finishesImg,
+    // thumbImage: finishesImg,
     description:
       "A personal project to build my first SaaS application. First version of application built with Node.js with Express, Passport.js, MongoDB, and a HTML/CSS/jQuery front-end.",
     stack: {
@@ -447,7 +447,7 @@ const projects: Project[] = [
     link: {
       web: "https://my.finishes.app"
     },
-    thumbImage: finishesApp,
+    // thumbImage: finishesApp,
     description:
       "A personal project to build my first SaaS application. First version of application built with Node.js with Express, Passport.js, MongoDB, and a HTML/CSS/jQuery front-end.",
     stack: {
@@ -478,7 +478,7 @@ const projects: Project[] = [
       codebase: "https://github.com/marklewis01/simple-gatsby-site",
       web: "https://marklewis01.github.io/simple-gatsby-site"
     },
-    thumbImage: gatsbyImg,
+    // thumbImage: gatsbyImg,
     description:
       "Getting to know server-side rendering. GatsbyJS static generated site",
     stack: {
@@ -495,7 +495,7 @@ const projects: Project[] = [
       codebase: "https://github.com/marklewis01/react-materialui-starter",
       web: "https://material-ui-mobx-starter.firebaseapp.com"
     },
-    thumbImage: firebaseImg,
+    // thumbImage: firebaseImg,
     description:
       "A starter template with authentication, login and protected routes.",
     stack: {
@@ -511,7 +511,7 @@ const projects: Project[] = [
     link: {
       web: "https://junglefy.com.au"
     },
-    thumbImage: junglefyImg,
+    // thumbImage: junglefyImg,
     description:
       "Based on Client-supplied UI designs and graphics, I configured an off-the-shelf WordPress theme to the Client's specification.",
     stack: {

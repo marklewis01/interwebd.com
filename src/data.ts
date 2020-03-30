@@ -8,14 +8,30 @@ import logoPDFA from "./assets/logo-pdfa.png";
 import logoDEC from "./assets/logo-nswdec.png";
 
 // project assets
-import t_fbStarter_login from "./assets/projects/thumb_material-ui-mobx-starter_login_MDPI.png";
-import t_fbStart_main from "./assets/projects/thumb_material-ui-mobx-starter_MDPI.png";
-import t_fbStart_tablet from "./assets/projects/thumb_material-ui-mobx-starter_iPad.png";
-import t_fbStart_mobile from "./assets/projects/thumb_material-ui-mobx-starter_mobile.png";
-import fbStarter_login from "./assets/projects/material-ui-mobx-starter_login_MDPI.png";
-import fbStart_main from "./assets/projects/material-ui-mobx-starter_MDPI.png";
-import fbStart_tablet from "./assets/projects/material-ui-mobx-starter_iPad.png";
-import fbStart_mobile from "./assets/projects/material-ui-mobx-starter_mobile.png";
+
+// fbStarter
+import t_fbStarter_login from "./assets/projects/fbStarter/thumb_login_MDPI.png";
+import t_fbStart_main from "./assets/projects/fbStarter/thumb_MDPI.png";
+import t_fbStart_tablet from "./assets/projects/fbStarter/thumb_iPad.png";
+import t_fbStart_mobile from "./assets/projects/fbStarter/thumb_mobile.png";
+import fbStarter_login from "./assets/projects/fbStarter/login_MDPI.png";
+import fbStart_main from "./assets/projects/fbStarter/MDPI.png";
+import fbStart_tablet from "./assets/projects/fbStarter/iPad.png";
+import fbStart_mobile from "./assets/projects/fbStarter/mobile.png";
+//finishes
+import finishes_main from './assets/projects/finishes/full_MDPI.png'
+import t_finishes_main from './assets/projects/finishes/thumb_full_MDPI.png'
+// gatsbyStarter
+import t_features from "./assets/projects/gatsbyStarter/thumb_features_MDPI.png";
+import t_main from "./assets/projects/gatsbyStarter/thumb_MDPI.png";
+import t_mobile from "./assets/projects/gatsbyStarter/thumb_mobile.png";
+import t_pricing from "./assets/projects/gatsbyStarter/thumb_pricing_MDPI.png";
+import t_pricing_mobile from "./assets/projects/gatsbyStarter/thumb_pricing_mobile.png";
+import features from "./assets/projects/gatsbyStarter/features_MDPI.png";
+import main from "./assets/projects/gatsbyStarter/MDPI.png";
+import mobile from "./assets/projects/gatsbyStarter/mobile.png";
+import pricing from "./assets/projects/gatsbyStarter/pricing_MDPI.png";
+import pricing_mobile from "./assets/projects/gatsbyStarter/pricing_mobile.png";
 
 export const skills = {
   technicalSkills: {
@@ -73,7 +89,7 @@ export const skills = {
   }
 };
 
-interface IProject {
+export interface IProject {
   label: string;
   description: string;
   keywords?: string[];
@@ -89,74 +105,118 @@ interface IProject {
   }[];
 }
 export const projects: IProject[] = [
-  {
-    label: "Interwebd",
-    description:
-      "This very site. I decided to showcase some of my frontend skills, as well, it presented a chance to get to try out Preact.js. Preact is a 3kB React alternative, so this site it super small in footprint.",
-    keywords: ["Preact", "Material-UI"],
-    codebase: "https://github.com/marklewis01/interwebd.com"
-  },
-  {
-    label: "Finishes v3",
-    description:
-      "As a result of feedback and a clearer understanding of the potential customer use case, I am currently rebuilding the Finishes platform in order to migrate the database to a relational database.",
-    keywords: ["MySQL", "Node", "Express", "Redux", "TypeScript"],
-    web: "https://finishes.app"
-  },
-  {
-    label: "GatsbyJS Starter Site",
-    description:
-      "A starter template site built to get an understanding of the GatsbyJS framework. The site is responsive, utilising both JSS and SASS, and has a mix of both stateful and stateless components.",
-    keywords: ["Gatsby", "JSS", "Material-UI", "SASS"],
-    codebase: "https://github.com/marklewis01/simple-gatsby-site",
-    web: "https://marklewis01.github.io/simple-gatsby-site"
-  },
-  {
-    label: "Firebase Starter",
-    description:
-      "A starter template featuring a React front-end and a Google Firebase backend. The template has authentication (using Firebase Authentication), the typical login features, and protected routes. State is managed using the lightweight Unstated.js library.",
-    keywords: [
-      "Authentication",
-      "Unstated.js",
-      "Firebase",
-      "Firestore",
-      "Material-UI"
-    ],
-    codebase: "https://github.com/marklewis01/react-materialui-starter",
-    web: "https://material-ui-mobx-starter.firebaseapp.com",
-    images: [
-      {
-        caption:
-          "Custom registration/login modal integrated with Firebase Authentication",
+         {
+           label: "Interwebd",
+           description:
+             "This very site. I decided to showcase some of my frontend skills, as well, it presented a chance to get to try out Preact.js. Preact is a 3kB React alternative, so this site it super small in footprint.",
+           keywords: ["Preact", "Material-UI"],
+           codebase: "https://github.com/marklewis01/interwebd.com"
+         },
+         {
+           label: "Finishes v3",
+           description:
+             "As a result of feedback and a clearer understanding of the potential customer use case, I am currently rebuilding the Finishes platform in order to migrate the database to a relational database.",
+           keywords: ["MySQL", "Node", "Express", "Redux", "TypeScript"],
+           web: "https://finishes.app",
+           images: [
+             {
+               source: {
+                 regular: finishes_main,
+                 thumbnail: t_finishes_main
+               }
+             }
+           ]
+         },
+         {
+           label: "GatsbyJS Starter Site",
+           description:
+             "A starter template site built to get an understanding of the GatsbyJS framework. The site is responsive, utilising both JSS and SASS, and has a mix of both stateful and stateless components.",
+           keywords: ["Gatsby", "JSS", "Material-UI", "SASS"],
+           codebase: "https://github.com/marklewis01/simple-gatsby-site",
+           web: "https://marklewis01.github.io/simple-gatsby-site",
+           images: [
+             {
+               caption: "",
+               source: {
+                 regular: main,
+                 thumbnail: t_main
+               }
+             },
+             {
+               caption: "",
+               source: {
+                 regular: mobile,
+                 thumbnail: t_mobile
+               }
+             }
+             {
+        caption: '',
         source: {
-          regular: fbStarter_login,
-          thumbnail: t_fbStarter_login
+          regular: features,
+          thumbnail: t_features        }
+             },
+             {
+        caption: '',
+        source: {
+          regular: pricing,
+          thumbnail: t_pricing
+        }
+             },
+             {
+        caption: '',
+        source: {
+          regular: pricing_mobile,
+          thumbnail: t_pricing_mobile
         }
       },
-      {
-        caption: "Simple page template with LHS navigation drawer",
-        source: {
-          regular: fbStart_main,
-          thumbnail: t_fbStart_main
-        }
-      },
-      {
-        caption: "Fully responsive: tablet device layout",
-        source: {
-          regular: fbStart_tablet,
-          thumbnail: t_fbStart_tablet
-        }
-      },
-      {
-        caption: "Fully responsive: mobile device layout",
-        source: {
-          regular: fbStart_mobile,
-          thumbnail: t_fbStart_mobile
-        }
-      }
-    ]
-  }
-];
+           ]
+         },
+         {
+           label: "Firebase Starter",
+           description:
+             "A starter template featuring a React front-end and a Google Firebase backend. The template has authentication (using Firebase Authentication), the typical login features, and protected routes. State is managed using the lightweight Unstated.js library.",
+           keywords: [
+             "Authentication",
+             "Unstated.js",
+             "Firebase",
+             "Firestore",
+             "Material-UI"
+           ],
+           codebase: "https://github.com/marklewis01/react-materialui-starter",
+           web: "https://material-ui-mobx-starter.firebaseapp.com",
+           images: [
+             {
+               caption:
+                 "Custom registration/login modal integrated with Firebase Authentication",
+               source: {
+                 regular: fbStarter_login,
+                 thumbnail: t_fbStarter_login
+               }
+             },
+             {
+               caption: "Simple page template with LHS navigation drawer",
+               source: {
+                 regular: fbStart_main,
+                 thumbnail: t_fbStart_main
+               }
+             },
+             {
+               caption: "Fully responsive: tablet device layout",
+               source: {
+                 regular: fbStart_tablet,
+                 thumbnail: t_fbStart_tablet
+               }
+             },
+             {
+               caption: "Fully responsive: mobile device layout",
+               source: {
+                 regular: fbStart_mobile,
+                 thumbnail: t_fbStart_mobile
+               }
+             }
+           ]
+         }
+       ];
 
 interface IExperience {
   date: string;
