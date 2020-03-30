@@ -81,22 +81,24 @@ export const Resume = ({ path }: { path: string }) => {
                         <Fragment>
                           <ListItem disableGutters>{skill[0]}</ListItem>
                           <List disablePadding>
-                            {skill[1].map(s => (
-                              <div
-                                style={{
-                                  display: "flex",
-                                  alignItems: "center"
-                                }}
-                              >
-                                <SubArrowIcon
-                                  fontSize="small"
-                                  color="secondary"
-                                />
-                                <ListItem disableGutters dense>
-                                  {s}
-                                </ListItem>
-                              </div>
-                            ))}
+                            {Array.isArray(skill[1])
+                              ? skill[1].map(s => (
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center"
+                                    }}
+                                  >
+                                    <SubArrowIcon
+                                      fontSize="small"
+                                      color="secondary"
+                                    />
+                                    <ListItem disableGutters dense>
+                                      {s}
+                                    </ListItem>
+                                  </div>
+                                ))
+                              : null}
                           </List>
                         </Fragment>
                       ) : (
