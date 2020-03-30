@@ -8,7 +8,6 @@ import {
   Grid,
   Hidden,
   List,
-  Paper,
   ListItem,
   Typography
 } from "@material-ui/core";

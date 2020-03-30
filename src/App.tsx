@@ -1,16 +1,15 @@
 import { h } from "preact";
 import { Router } from "preact-router";
-import SimpleReactLightbox from "simple-react-lightbox";
 
 // Mui
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 // custom comps
 import { Nav } from "./components/Nav";
 import ScrollToTop from "./components/ScrollToTop";
 
 // routes/pages
-import { Resume, Resume1, Projects } from "./routes";
+import { Resume1 } from "./routes";
 
 // styles
 import "./styles.scss";
@@ -27,8 +26,6 @@ export default function App() {
       <Nav />
       <div className="main">
         <Router onChange={handleRouteChange}>
-          {/* <Projects path="/projects" /> */}
-          {/* <Resume path="resume" /> */}
           <Resume1 path="/" />
           <Error default />
         </Router>
