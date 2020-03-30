@@ -4,9 +4,12 @@ import { useState } from "preact/hooks";
 
 // Mui
 import { IconButton, Tooltip, Typography } from "@material-ui/core";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
+import {
+  GitHub as GitHubIcon,
+  LinkedIn as LinkedInIcon,
+  LocationOn as LocationIcon,
+  Mail as MailIcon
+} from "@material-ui/icons";
 
 // custom comps
 import { Neon } from "../Neon";
@@ -36,7 +39,7 @@ const SOIcon = () => (
 );
 
 export const Nav = () => {
-  const [forHire, setForHire] = useState(true);
+  const [forHire, setForHire] = useState(false);
 
   const handleClick = (s: string) => {
     s.startsWith("mailto")
@@ -49,7 +52,7 @@ export const Nav = () => {
   };
   const contactLinks = [
     {
-      icon: <MailOutlineIcon />,
+      icon: <MailIcon />,
       link: "mailto:mark@interwebd.com",
       tooltip: "Send me an Email"
     },
@@ -82,37 +85,32 @@ export const Nav = () => {
   ];
 
   return (
-    <div className="header">
+    <div className="nav">
       <div className="neon-wrapper">
         <Neon text="For Hire" power={forHire} />
         <LightSwitch checked={forHire} onClick={handleLightSwitch} switchOnly />
       </div>
       <div
         style={{ background: `center/cover no-repeat url(${ml_photo})` }}
-        className="nav-avatar"
+        className="avatar"
       />
-      <h1 className="nav-name">Mark Lewis</h1>
-      <h5 className="nav-subtitle">Web Developer</h5>
-      <Typography variant="h4" className="nav-mini-bio">
+      <h1 className="name">Mark Lewis</h1>
+      <h5 className="subtitle">Web Developer</h5>
+      <h5 className="location">
+        <LocationIcon className="icon" />
+        Sydney, Australia
+      </h5>
+      <Typography variant="h4" className="mini-bio">
         I get a kick out of building ideas and understanding how things work
       </Typography>
 
-      <nav className="nav-item-wrapper">
-        {navPageLinks.map(link => (
-          <p className="nav-item">
-            <Link href={link.path} activeClassName="link-active">
-              {link.label}
-            </Link>
-          </p>
-        ))}
-      </nav>
-      <div>
+      <div className="social-links-wrapper">
         <ul className="contact-links">
           {contactLinks.map(link => (
             <Link className="contact-link">
               <Tooltip title={link.tooltip} arrow>
                 <IconButton
-                  classes={{ root: "contact-icon" }}
+                  classes={{ root: "icon" }}
                   onClick={() => handleClick(link.link)}
                 >
                   {link.icon}

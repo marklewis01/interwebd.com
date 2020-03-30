@@ -2,5 +2,9 @@
   "cSpell.words": [
     "divi",
     "firestore"
+  ],
+  "cSpell.ignoreWords": [
+    "lightbox",
+    "toggle"
   ]
 }

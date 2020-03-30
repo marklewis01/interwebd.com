@@ -2,14 +2,14 @@ import { h } from "preact";
 import { Router } from "preact-router";
 
 // Mui
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 // custom comps
 import { Nav } from "./components/Nav";
 import ScrollToTop from "./components/ScrollToTop";
 
 // routes/pages
-import { Resume, Projects } from "./routes";
+import { Resume } from "./Resume";
 
 // styles
 import "./styles.scss";
@@ -26,8 +26,7 @@ export default function App() {
       <Nav />
       <div className="main">
         <Router onChange={handleRouteChange}>
-          <Projects path="/" />
-          <Resume path="resume" />
+          <Resume path="/" />
           <Error default />
         </Router>
         <ScrollToTop />
