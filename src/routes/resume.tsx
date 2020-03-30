@@ -20,7 +20,7 @@ import {
 
 // data
 import { experience, projects, skills, IProject } from "../data";
-export const Resume1 = ({ path }: { path: string }) => {
+export const Resume = ({ path }: { path: string }) => {
   return (
     <Grid className="resume">
       <Grid
