@@ -1,6 +1,9 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 
+import ReactFancyBox from "react-fancybox";
+import "react-fancybox/lib/fancybox.css";
+
 // Mui
 import { Grid, Typography } from "@material-ui/core";
 import { Code as CodeIcon, Language as WebsiteIcon } from "@material-ui/icons";
@@ -71,6 +74,11 @@ export const Project = ({ project }: { project: IProject }) => {
               </Grid>
             ))}
           </Grid>
+          <ReactFancyBox
+            thumbnail="https://loremflickr.com/320/240"
+            image="https://www.w3schools.com/howto/img_forest.jpg"
+          />
+
           {/* <ModalGateway>
             {lightBox ? (
               <Modal allowFullscreen={false} onClose={() => setLightBox(false)}>
