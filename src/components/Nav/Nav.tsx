@@ -39,7 +39,7 @@ const SOIcon = () => (
 );
 
 export const Nav = () => {
-  const [forHire, setForHire] = useState(false);
+  const [forHire, setForHire] = useState(true);
 
   const handleClick = (s: string) => {
     s.startsWith("mailto")
