@@ -35,11 +35,9 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
   const maxSteps = images.length;
 
   const getImageDims = () => {
-    console.log("getImgDims called", currentIndex);
     const img = new Image();
     img.src = images[currentIndex].source.regular;
     img.onload = () => {
-      console.log("w", img.width, "h", img.height);
       setCurrentImgDims({ width: img.width, height: img.height });
       setModal(true);
     };
@@ -58,7 +56,6 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
   };
 
   const toggleModal = (selectedIndex: number | null) => {
-    console.log(selectedIndex);
     if (selectedIndex === null) {
       setModal(false);
     }
@@ -66,15 +63,12 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
   };
 
   useEffect(() => {
-    console.log("currentIndex called", currentIndex);
     if (currentIndex !== null) {
       getImageDims();
     } else {
       setCurrentImgDims(null);
     }
   }, [currentIndex]);
-
-  console.log({ modal, currentImgDims, currentIndex });
 
   return (
     <div>
