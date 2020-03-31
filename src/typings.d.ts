@@ -23,7 +23,7 @@ interface IProject {
     caption?: string;
     source: {
       download?: string;
-      regular: string;
+      regular:  string;
       thumbnail?: string;
     };
   }[];

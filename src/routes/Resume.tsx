@@ -1,6 +1,4 @@
 import { h, Fragment } from "preact";
-import { useState } from "preact/hooks";
-// import Carousel, { Modal, ModalGateway } from "react-images";
 
 // Mui
 import {

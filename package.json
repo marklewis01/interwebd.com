@@ -26,12 +26,9 @@
     "preact-compat": "^3.19.0",
     "preact-router": "^3.2.1",
     "react": "^16.13.1",
-    "react-fancybox": "^0.2.5",
-    "react-images": "^1.1.0",
     "react-swipeable-views": "^0.13.9",
     "react-swipeable-views-utils": "^0.13.9",
-    "typeface-roboto": "0.0.75",
-    "vertical-timeline-component-for-react": "^1.0.6"
+    "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
     "@types/react-swipeable-views": "^0.13.0",

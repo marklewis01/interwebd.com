@@ -1,8 +1,4 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
-
-import ReactFancyBox from "react-fancybox";
-import "react-fancybox/lib/fancybox.css";
 
 import ImageModal from "../ImageModal";
 
@@ -49,10 +45,6 @@ export const Project = ({ project }: { project: IProject }) => (
     {project.images ? (
       <Grid item xs={12} lg>
         <ImageModal images={project.images} />
-        <ReactFancyBox
-          thumbnail="https://loremflickr.com/320/240"
-          image="https://www.w3schools.com/howto/img_forest.jpg"
-        />
       </Grid>
     ) : null}
   </Grid>

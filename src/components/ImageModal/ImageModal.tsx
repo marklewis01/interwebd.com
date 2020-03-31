@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 // Mui
 import {
@@ -27,33 +27,42 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
 
   const [modal, setModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentImgDims, setCurrentImgDims] = useState({
+    width: null,
+    height: null
+  });
 
   const maxSteps = images.length;
 
-  const showModal = () => {
-    this.setState({
-      show: true
-    });
-    this.props.onOpen();
-  };
-
   const handleNext = () => {
     setCurrentIndex(prevActiveStep => prevActiveStep + 1);
+    // setCurrentImgWidth()
   };
 
   const handleBack = () => {
     setCurrentIndex(prevActiveStep => prevActiveStep - 1);
+    // setCurrentImgWidth()
   };
 
   const handleStepChange = (step: number) => {
     setCurrentIndex(step);
+    // setCurrentImgWidth(images[step].source.regular)
   };
 
   const toggleModal = (selectedIndex: number) => {
     setModal(!modal);
     setCurrentIndex(selectedIndex);
-    console.log({ maxSteps, modal, currentIndex });
+    // setCurrentImgWidth(null)
   };
+
+  useEffect(() => {
+    // set current image dims
+    const img = new Image();
+    img.src = images[currentIndex].source.regular;
+    setCurrentImgDims({ width: img.width, height: img.height });
+  }, [currentIndex]);
+
+  console.log(setCurrentImgDims);
 
   return (
     <div>
@@ -70,13 +79,16 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
           </Grid>
         ))}
       </Grid>
-      <Dialog
-        open={modal}
-        onClose={() => setModal(false)}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        <div className={classes.root}>
+      {modal ? (
+        <Dialog
+          open={modal}
+          onClose={() => setModal(false)}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          classes={{
+            paper: classes.modal
+          }}
+        >
           <Paper square elevation={0} className={classes.header}>
             <Typography>{images[currentIndex].caption}</Typography>
           </Paper>
@@ -85,18 +97,27 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
             index={currentIndex}
             onChangeIndex={handleStepChange}
             enableMouseEvents
+            className={classes.container}
+            style={{
+              width: currentImgDims.width,
+              height: currentImgDims.height
+            }}
           >
-            {images.map((step, index) => (
-              <div key={step.source.regular}>
-                {Math.abs(currentIndex - index) <= 2 ? (
-                  <img
-                    className={classes.img}
-                    src={step.source.regular}
-                    alt={step.caption}
-                  />
-                ) : null}
-              </div>
-            ))}
+            {images.map((step, index) =>
+              Math.abs(currentIndex - index) <= images.length ? (
+                <img
+                  key={step.source.regular}
+                  // alt={step.caption}
+                  src={step.source.regular}
+                  className={classes.img}
+                  width={currentImgDims.width}
+                  height={currentImgDims.height}
+                  // style={{
+                  // backgroundImage: `url(${step.source.regular})`,
+                  // }}
+                />
+              ) : null
+            )}
           </AutoPlaySwipeableViews>
           <MobileStepper
             steps={maxSteps}
@@ -124,29 +145,8 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
               </Button>
             }
           />
-        </div>
-      </Dialog>
+        </Dialog>
+      ) : null}
     </div>
   );
-}
-
-{
-  /* {this.renderThumbnail()}
-        <ReactCSSTransitionGroup
-          style={{animationDuration: 1000}}
-          transitionName={animation}
-          transitionEnterTimeout={TRANSITION_TIME}
-          transitionLeaveTimeout={TRANSITION_TIME}>
-          {this.state.show
-            ? (
-              <div onClick={this.handleClickBox} className="box">
-                <div ref={box => this.box = box} className="image-box">
-                  {showCloseBtn && <img onClick={this.close} className="close-btn" src={closeImg} alt="close"/>}
-                  <img style={imageStyle} src={image} alt="original"/>
-                  {caption && <div className="caption">{caption}</div>}
-                </div>
-              </div>
-
-            ) : null}
-        </ReactCSSTransitionGroup> */
 }
