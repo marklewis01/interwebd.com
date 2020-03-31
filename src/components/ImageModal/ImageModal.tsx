@@ -26,7 +26,7 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
   const classes = useStyles();
 
   const [modal, setModal] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<null | number>(null);
   const [currentImgDims, setCurrentImgDims] = useState({
     width: null,
     height: null
@@ -34,35 +34,47 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
 
   const maxSteps = images.length;
 
+  const getImageDims = () => {
+    console.log("getImgDims called", currentIndex);
+    const img = new Image();
+    img.src = images[currentIndex].source.regular;
+    img.onload = () => {
+      console.log("w", img.width, "h", img.height);
+      setCurrentImgDims({ width: img.width, height: img.height });
+      setModal(true);
+    };
+  };
+
   const handleNext = () => {
     setCurrentIndex(prevActiveStep => prevActiveStep + 1);
-    // setCurrentImgWidth()
   };
 
   const handleBack = () => {
     setCurrentIndex(prevActiveStep => prevActiveStep - 1);
-    // setCurrentImgWidth()
   };
 
   const handleStepChange = (step: number) => {
     setCurrentIndex(step);
-    // setCurrentImgWidth(images[step].source.regular)
   };
 
-  const toggleModal = (selectedIndex: number) => {
-    setModal(!modal);
+  const toggleModal = (selectedIndex: number | null) => {
+    console.log(selectedIndex);
+    if (selectedIndex === null) {
+      setModal(false);
+    }
     setCurrentIndex(selectedIndex);
-    // setCurrentImgWidth(null)
   };
 
   useEffect(() => {
-    // set current image dims
-    const img = new Image();
-    img.src = images[currentIndex].source.regular;
-    setCurrentImgDims({ width: img.width, height: img.height });
+    console.log("currentIndex called", currentIndex);
+    if (currentIndex !== null) {
+      getImageDims();
+    } else {
+      setCurrentImgDims(null);
+    }
   }, [currentIndex]);
 
-  console.log(setCurrentImgDims);
+  console.log({ modal, currentImgDims, currentIndex });
 
   return (
     <div>
@@ -82,7 +94,7 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
       {modal ? (
         <Dialog
           open={modal}
-          onClose={() => setModal(false)}
+          onClose={() => toggleModal(null)}
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           classes={{
