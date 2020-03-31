@@ -10,14 +10,14 @@ import logoDEC from "./assets/logo-nswdec.png";
 // project assets
 
 // fbStarter
-import t_fbStarter_login from "./assets/projects/fbStarter/thumb_login_MDPI.png";
-import t_fbStart_main from "./assets/projects/fbStarter/thumb_MDPI.png";
-import t_fbStart_tablet from "./assets/projects/fbStarter/thumb_iPad.png";
-import t_fbStart_mobile from "./assets/projects/fbStarter/thumb_mobile.png";
-import fbStarter_login from "./assets/projects/fbStarter/login_MDPI.png";
-import fbStart_main from "./assets/projects/fbStarter/MDPI.png";
-import fbStart_tablet from "./assets/projects/fbStarter/iPad.png";
-import fbStart_mobile from "./assets/projects/fbStarter/mobile.png";
+import t_fbStarter_login from "/assets/projects/fbStarter/thumb_login_MDPI.png";
+import t_fbStart_main from "/assets/projects/fbStarter/thumb_MDPI.png";
+import t_fbStart_tablet from "/assets/projects/fbStarter/thumb_iPad.png";
+import t_fbStart_mobile from "/assets/projects/fbStarter/thumb_mobile.png";
+import fbStarter_login from "/assets/projects/fbStarter/login_MDPI.png";
+import fbStart_main from "/assets/projects/fbStarter/MDPI.png";
+import fbStart_tablet from "/assets/projects/fbStarter/iPad.png";
+import fbStart_mobile from "/assets/projects/fbStarter/mobile.png";
 //finishes
 import finishes_main from './assets/projects/finishes/full_MDPI.png'
 import t_finishes_main from './assets/projects/finishes/thumb_full_MDPI.png'

@@ -4,6 +4,8 @@ import { useState } from "preact/hooks";
 import ReactFancyBox from "react-fancybox";
 import "react-fancybox/lib/fancybox.css";
 
+import ImageModal from "../ImageModal";
+
 // Mui
 import { Grid, Typography } from "@material-ui/core";
 import { Code as CodeIcon, Language as WebsiteIcon } from "@material-ui/icons";
@@ -57,7 +59,7 @@ export const Project = ({ project }: { project: IProject }) => {
 
       {project.images ? (
         <Grid item xs={12} lg>
-          <Grid container spacing={2}>
+          {/* <Grid container spacing={2}>
             {project.images.map(({ caption, source }, j) => (
               <Grid
                 item
@@ -73,7 +75,8 @@ export const Project = ({ project }: { project: IProject }) => {
                 />
               </Grid>
             ))}
-          </Grid>
+          </Grid> */}
+          <ImageModal images={project.images} />
           <ReactFancyBox
             thumbnail="https://loremflickr.com/320/240"
             image="https://www.w3schools.com/howto/img_forest.jpg"

@@ -21,6 +21,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.45",
     "@now/node": "^1.4.1",
+    "assets": "^3.0.1",
     "preact": "^10.3.4",
     "preact-compat": "^3.19.0",
     "preact-router": "^3.2.1",
