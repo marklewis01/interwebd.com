@@ -2,17 +2,13 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 
 // Mui
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Modal, Typography } from "@material-ui/core";
 
-export default function ImageModal({
-  images,
-  i = 0
-}: {
-  images: IProject["images"];
-  i?: number;
-}) {
+export default function ImageModal({ images }: { images: IProject["images"] }) {
   const [modal, setModal] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(i);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const maxSteps = images.length;
 
   const showModal = () => {
     this.setState({
@@ -21,20 +17,23 @@ export default function ImageModal({
     this.props.onOpen();
   };
 
-  const renderThumbnail = () => {
-    // // const {thumbnail, image, defaultThumbnailWidth, defaultThumbnailHeight} = this.props
-    // if (!thumbnail) {
-    //   return (
-    //     <div onClick={this.show} className="thumbnail">
-    //       <img
-    //         style={{width: defaultThumbnailWidth, height: defaultThumbnailHeight, objectFit: 'cover'}}
-    //         src={image} alt="thumbnail"/>
-    //     </div>
-    //   )
-    // }
+  const handleNext = () => {
+    setCurrentIndex(prevActiveStep => prevActiveStep + 1);
   };
 
-  console.log("images", images);
+  const handleBack = () => {
+    setCurrentIndex(prevActiveStep => prevActiveStep - 1);
+  };
+
+  const handleStepChange = (step: number) => {
+    setCurrentIndex(step);
+  };
+
+  const toggleModal = (selectedIndex: number) => {
+    setModal(!modal);
+    setCurrentIndex(selectedIndex);
+    console.log({ maxSteps, modal, currentIndex });
+  };
 
   return (
     <div className="react-fancybox">
@@ -44,14 +43,30 @@ export default function ImageModal({
             item
             xs={4}
             sm={3}
-            // onClick={() => toggleLightbox(j)}
+            onClick={() => toggleModal(j)}
             key={source.thumbnail}
           >
             <img alt={caption} src={source.thumbnail} className="image-thumb" />
           </Grid>
         ))}
       </Grid>
-      {/* {this.renderThumbnail()}
+      <Modal
+        open={modal}
+        onClose={() => setModal(false)}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <img
+          src={images[currentIndex].source.regular}
+          className="image-thumb"
+        />
+      </Modal>
+    </div>
+  );
+}
+
+{
+  /* {this.renderThumbnail()}
         <ReactCSSTransitionGroup
           style={{animationDuration: 1000}}
           transitionName={animation}
@@ -68,7 +83,5 @@ export default function ImageModal({
               </div>
 
             ) : null}
-        </ReactCSSTransitionGroup> */}
-    </div>
-  );
+        </ReactCSSTransitionGroup> */
 }
