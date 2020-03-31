@@ -2,9 +2,29 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 
 // Mui
-import { Grid, Modal, Typography } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  MobileStepper,
+  Dialog,
+  Paper,
+  Typography
+} from "@material-ui/core";
+import SwipeableViews from "react-swipeable-views";
+import { autoPlay } from "react-swipeable-views-utils";
+
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+// Styles
+import { makeStyles } from "@material-ui/core/styles";
+import { styles } from "./styles";
+const useStyles = makeStyles(styles);
 
 export default function ImageModal({ images }: { images: IProject["images"] }) {
+  const classes = useStyles();
+
   const [modal, setModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -36,7 +56,7 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
   };
 
   return (
-    <div className="react-fancybox">
+    <div>
       <Grid container spacing={2}>
         {images.map(({ caption, source }, j) => (
           <Grid
@@ -50,17 +70,62 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
           </Grid>
         ))}
       </Grid>
-      <Modal
+      <Dialog
         open={modal}
         onClose={() => setModal(false)}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <img
-          src={images[currentIndex].source.regular}
-          className="image-thumb"
-        />
-      </Modal>
+        <div className={classes.root}>
+          <Paper square elevation={0} className={classes.header}>
+            <Typography>{images[currentIndex].caption}</Typography>
+          </Paper>
+          <AutoPlaySwipeableViews
+            axis="x"
+            index={currentIndex}
+            onChangeIndex={handleStepChange}
+            enableMouseEvents
+          >
+            {images.map((step, index) => (
+              <div key={step.source.regular}>
+                {Math.abs(currentIndex - index) <= 2 ? (
+                  <img
+                    className={classes.img}
+                    src={step.source.regular}
+                    alt={step.caption}
+                  />
+                ) : null}
+              </div>
+            ))}
+          </AutoPlaySwipeableViews>
+          <MobileStepper
+            steps={maxSteps}
+            position="static"
+            variant="text"
+            activeStep={currentIndex}
+            nextButton={
+              <Button
+                size="small"
+                onClick={handleNext}
+                disabled={currentIndex === maxSteps - 1}
+              >
+                Next
+                <KeyboardArrowRight />
+              </Button>
+            }
+            backButton={
+              <Button
+                size="small"
+                onClick={handleBack}
+                disabled={currentIndex === 0}
+              >
+                <KeyboardArrowLeft />
+                Back
+              </Button>
+            }
+          />
+        </div>
+      </Dialog>
     </div>
   );
 }
