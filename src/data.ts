@@ -22,16 +22,25 @@ import fbStart_mobile from "./assets/projects/fbStarter/mobile.png";
 import finishes_main from "./assets/projects/finishes/full_MDPI.png";
 import t_finishes_main from "./assets/projects/finishes/thumb_full_MDPI.png";
 // gatsbyStarter
-import t_features from "./assets/projects/gatsbyStarter/thumb_features_MDPI.png";
-import t_main from "./assets/projects/gatsbyStarter/thumb_MDPI.png";
-import t_mobile from "./assets/projects/gatsbyStarter/thumb_mobile.png";
-import t_pricing from "./assets/projects/gatsbyStarter/thumb_pricing_MDPI.png";
-import t_pricing_mobile from "./assets/projects/gatsbyStarter/thumb_pricing_mobile.png";
-import features from "./assets/projects/gatsbyStarter/features_MDPI.png";
-import main from "./assets/projects/gatsbyStarter/MDPI.png";
-import mobile from "./assets/projects/gatsbyStarter/mobile.png";
-import pricing from "./assets/projects/gatsbyStarter/pricing_MDPI.png";
-import pricing_mobile from "./assets/projects/gatsbyStarter/pricing_mobile.png";
+import t_gatsby_features from "./assets/projects/gatsbyStarter/thumb_features_MDPI.png";
+import t_gatsby_main from "./assets/projects/gatsbyStarter/thumb_MDPI.png";
+import t_gatsby_mobile from "./assets/projects/gatsbyStarter/thumb_mobile.png";
+import t_gatsby_pricing from "./assets/projects/gatsbyStarter/thumb_pricing_MDPI.png";
+import t_gatsby_pricing_mobile from "./assets/projects/gatsbyStarter/thumb_pricing_mobile.png";
+import gatsby_features from "./assets/projects/gatsbyStarter/features_MDPI.png";
+import gatsby_main from "./assets/projects/gatsbyStarter/MDPI.png";
+import gatsby_mobile from "./assets/projects/gatsbyStarter/mobile.png";
+import gatsby_pricing from "./assets/projects/gatsbyStarter/pricing_MDPI.png";
+import gatsby_pricing_mobile from "./assets/projects/gatsbyStarter/pricing_mobile.png";
+// Junglefy
+import t_junglefy_contact from "./assets/projects/junglefy/thumb_contact_mobile.png";
+import t_junglefy_news from "./assets/projects/junglefy/thumb_news_MDPI.png";
+import t_junglefy_project from "./assets/projects/junglefy/thumb_project_tablet.png";
+import t_junglefy_projects from "./assets/projects/junglefy/thumb_projects_MDPI.png";
+import junglefy_contact from "./assets/projects/junglefy/contact_mobile.png";
+import junglefy_news from "./assets/projects/junglefy/news_MDPI.png";
+import junglefy_project from "./assets/projects/junglefy/project_tablet.png";
+import junglefy_projects from "./assets/projects/junglefy/projects_MDPI.png";
 
 export const skills = {
   technicalSkills: {
@@ -123,36 +132,29 @@ export const projects: IProject[] = [
       {
         caption: "",
         source: {
-          regular: main,
-          thumbnail: t_main
+          regular: gatsby_main,
+          thumbnail: t_gatsby_main
         }
       },
       {
         caption: "",
         source: {
-          regular: mobile,
-          thumbnail: t_mobile
+          regular: gatsby_mobile,
+          thumbnail: t_gatsby_mobile
         }
       },
       {
         caption: "",
         source: {
-          regular: features,
-          thumbnail: t_features
+          regular: gatsby_features,
+          thumbnail: t_gatsby_features
         }
       },
       {
         caption: "",
         source: {
-          regular: pricing,
-          thumbnail: t_pricing
-        }
-      },
-      {
-        caption: "Pricing mobile",
-        source: {
-          regular: pricing_mobile,
-          thumbnail: t_pricing_mobile
+          regular: gatsby_pricing,
+          thumbnail: t_gatsby_pricing
         }
       }
     ]
@@ -160,7 +162,7 @@ export const projects: IProject[] = [
   {
     label: "Firebase Starter",
     description:
-      "A starter template featuring a React front-end and a Google Firebase backend. The template has authentication (using Firebase Authentication), the typical login features, and protected routes. State is managed using the lightweight Unstated.js library.",
+      "A starter template featuring a React front-end and a Google Firebase backend. The template has authentication (using Firebase Authentication), the typical login t_gatsby_features, and protected routes. State is managed using the lightweight Unstated.js library.",
     keywords: [
       "Authentication",
       "Unstated.js",
@@ -186,18 +188,55 @@ export const projects: IProject[] = [
           thumbnail: t_fbStart_main
         }
       },
+      // {
+      //   caption: "Fully responsive: tablet device layout",
+      //   source: {
+      //     regular: fbStart_tablet,
+      //     thumbnail: t_fbStart_tablet
+      //   }
+      // },
       {
-        caption: "Fully responsive: tablet device layout",
-        source: {
-          regular: fbStart_tablet,
-          thumbnail: t_fbStart_tablet
-        }
-      },
-      {
-        caption: "Fully responsive: mobile device layout",
+        caption: "Fully responsive: gatsby_mobile device layout",
         source: {
           regular: fbStart_mobile,
           thumbnail: t_fbStart_mobile
+        }
+      }
+    ]
+  },
+  {
+    label: "Junglefy",
+    description:
+      "This very site. I decided to showcase some of my frontend skills, as well, it presented a chance to get to try out Preact.js. Preact is a 3kB React alternative, so this site it super small in footprint.",
+    keywords: ["WordPress"],
+    web: "https://junglefy.com.au",
+    images: [
+      {
+        caption: "",
+        source: {
+          regular: junglefy_projects,
+          thumbnail: t_junglefy_projects
+        }
+      },
+      {
+        caption: "",
+        source: {
+          regular: junglefy_project,
+          thumbnail: t_junglefy_project
+        }
+      },
+      {
+        caption: "",
+        source: {
+          regular: junglefy_news,
+          thumbnail: t_junglefy_news
+        }
+      },
+      {
+        caption: "",
+        source: {
+          regular: junglefy_contact,
+          thumbnail: t_junglefy_contact
         }
       }
     ]
