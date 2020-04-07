@@ -188,13 +188,6 @@ export const projects: IProject[] = [
           thumbnail: t_fbStart_main
         }
       },
-      // {
-      //   caption: "Fully responsive: tablet device layout",
-      //   source: {
-      //     regular: fbStart_tablet,
-      //     thumbnail: t_fbStart_tablet
-      //   }
-      // },
       {
         caption: "Fully responsive: gatsby_mobile device layout",
         source: {

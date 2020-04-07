@@ -8,7 +8,9 @@ import {
   MobileStepper,
   Dialog,
   Paper,
-  Typography
+  Typography,
+  useMediaQuery,
+  useTheme
 } from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
@@ -20,10 +22,14 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 // Styles
 import { makeStyles } from "@material-ui/core/styles";
 import { styles } from "./styles";
+
 const useStyles = makeStyles(styles);
 
 export default function ImageModal({ images }: { images: IProject["images"] }) {
   const classes = useStyles();
+
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   const [modal, setModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState<null | number>(null);
@@ -110,7 +116,7 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
             className={classes.container}
             style={{
               width: currentImgDims.width,
-              height: currentImgDims.height,
+              height: mdDown ? undefined : currentImgDims.height,
               transition: "all ease 200ms"
             }}
           >
@@ -125,8 +131,8 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
                   }}
                   src={image.source.regular}
                   className={classes.img}
-                  width={currentImgDims.width}
-                  height={currentImgDims.height}
+                  width={mdDown ? undefined : currentImgDims.width}
+                  height={mdDown ? undefined : currentImgDims.height}
                 />
               ) : null
             )}

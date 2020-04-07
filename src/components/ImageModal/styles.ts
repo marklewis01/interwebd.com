@@ -10,9 +10,6 @@ export const styles = (theme: Theme) =>
     container: {
       overflowY: "auto",
       width: "unset"
-      // "& div": {
-      //   maxHeight: "100%"
-      // }
     },
     header: {
       color: theme.palette.primary.contrastText,
@@ -25,7 +22,10 @@ export const styles = (theme: Theme) =>
     img: {
       display: "block",
       maxWidth: "90vw",
-      overflow: "hidden"
+      overflow: "hidden",
+      [theme.breakpoints.down("md")]: {
+        width: "100%"
+      }
     },
     modal: {
       maxWidth: "unset"
