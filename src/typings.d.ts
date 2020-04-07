@@ -26,4 +26,4 @@ interface IProject {
       regular:  string;
       thumbnail?: string;
     };
-  }[];
+  }[]

@@ -33,19 +33,25 @@ export const Project = ({ project }: { project: IProject }) => (
         </Grid>
       </Grid>
     </Grid>
-    <Grid item xs={12} lg container>
-      <Typography variant="body1">
-        {project.description}
-        {project.keywords.length ? (
-          <span className="keywords"> ({project["keywords"].join(", ")})</span>
+    <Grid item xs={12} lg>
+      <Grid container spacing={4}>
+        <Grid item xs={12} xl>
+          <Typography variant="body1">
+            {project.description}
+            {project.keywords.length ? (
+              <span className="keywords">
+                {" "}
+                ({project["keywords"].join(", ")})
+              </span>
+            ) : null}
+          </Typography>
+        </Grid>
+        {project.images ? (
+          <Grid item xs={12} xl>
+            <ImageModal images={project.images} />
+          </Grid>
         ) : null}
-      </Typography>
-    </Grid>
-
-    {project.images ? (
-      <Grid item xs={12} lg>
-        <ImageModal images={project.images} />
       </Grid>
-    ) : null}
+    </Grid>
   </Grid>
 );

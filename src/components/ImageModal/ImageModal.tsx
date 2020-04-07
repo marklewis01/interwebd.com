@@ -8,7 +8,9 @@ import {
   MobileStepper,
   Dialog,
   Paper,
-  Typography
+  Typography,
+  useMediaQuery,
+  useTheme
 } from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
@@ -20,10 +22,14 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 // Styles
 import { makeStyles } from "@material-ui/core/styles";
 import { styles } from "./styles";
+
 const useStyles = makeStyles(styles);
 
 export default function ImageModal({ images }: { images: IProject["images"] }) {
   const classes = useStyles();
+
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   const [modal, setModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState<null | number>(null);
@@ -95,32 +101,38 @@ export default function ImageModal({ images }: { images: IProject["images"] }) {
             paper: classes.modal
           }}
         >
-          <Paper square elevation={0} className={classes.header}>
-            <Typography>{images[currentIndex].caption}</Typography>
-          </Paper>
+          {images[currentIndex].caption ? (
+            <Paper square elevation={0} className={classes.header}>
+              <Typography>{images[currentIndex].caption}</Typography>
+            </Paper>
+          ) : null}
           <AutoPlaySwipeableViews
+            autoplay={}
+            interval={10000}
+            enableMouseEvents
             axis="x"
             index={currentIndex}
             onChangeIndex={handleStepChange}
-            enableMouseEvents
             className={classes.container}
             style={{
               width: currentImgDims.width,
-              height: currentImgDims.height
+              height: mdDown ? undefined : currentImgDims.height,
+              transition: "all ease 200ms"
             }}
           >
-            {images.map((step, index) =>
+            {images.map((image, index) =>
               Math.abs(currentIndex - index) <= images.length ? (
                 <img
-                  key={step.source.regular}
-                  // alt={step.caption}
-                  src={step.source.regular}
+                  key={image.source.regular}
+                  // alt={image.caption}
+                  style={{
+                    opacity: currentIndex === index ? 1 : 0,
+                    transition: "opacity ease 100ms"
+                  }}
+                  src={image.source.regular}
                   className={classes.img}
-                  width={currentImgDims.width}
-                  height={currentImgDims.height}
-                  // style={{
-                  // backgroundImage: `url(${step.source.regular})`,
-                  // }}
+                  width={mdDown ? undefined : currentImgDims.width}
+                  height={mdDown ? undefined : currentImgDims.height}
                 />
               ) : null
             )}
