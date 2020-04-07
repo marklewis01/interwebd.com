@@ -4,8 +4,6 @@
 
 :root {
   /* Set neon color */
-  /* --neon-text-color: rgb(0, 249, 12);
-  --neon-border-color: rgb(255, 0, 0); */
   --neon-text-color: #999999;
   --neon-border-color: #d2a100;
 }
@@ -22,8 +20,6 @@
 }
 
 .neon {
-  /* color: #8bcc8d;
-  border: 2px solid #ffc400; */
   color: #ffffff;
   border: 2px solid #ffc400;
   font-size: 30px;
@@ -38,8 +34,6 @@
 }
 .neon-off {
   animation: unset;
-  /* color: #8bcc8d;
-  border-color: #8a7a45; */
   color: #eeeeee;
   border-color: #ffc400;
 }

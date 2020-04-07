@@ -8,7 +8,7 @@ import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
   LocationOn as LocationIcon,
-  Mail as MailIcon
+  Mail as MailIcon,
 } from "@material-ui/icons";
 
 // custom comps
@@ -54,41 +54,41 @@ export const Nav = () => {
     {
       icon: <MailIcon />,
       link: "mailto:mark@interwebd.com",
-      tooltip: "Send me an Email"
+      tooltip: "Send me an Email",
     },
     {
       icon: <LinkedInIcon />,
       link: "https://www.linkedin.com/in/marklewis01",
-      tooltip: "See my LinkedIn"
+      tooltip: "See my LinkedIn",
     },
     {
       icon: <GitHubIcon />,
       link: "https://github.com/marklewis01",
-      tooltip: "See my GitHub"
+      tooltip: "See my GitHub",
     },
     {
       icon: <SOIcon />,
       link: "https://stackoverflow.com/users/9330692/m-lewis",
-      tooltip: "See my StackOverflow"
-    }
+      tooltip: "See my StackOverflow",
+    },
   ];
 
   const navPageLinks = [
     {
       label: "Projects",
-      path: "/"
+      path: "/",
     },
     {
       label: "Resume",
-      path: "/resume"
-    }
+      path: "/resume",
+    },
   ];
 
   return (
     <div className="nav">
       <div className="neon-wrapper">
-        <Neon text="For Hire" power={forHire} />
         <LightSwitch checked={forHire} onClick={handleLightSwitch} switchOnly />
+        <Neon text="For Hire" power={forHire} />
       </div>
       <div
         style={{ background: `center/cover no-repeat url(${ml_photo})` }}
@@ -106,7 +106,7 @@ export const Nav = () => {
 
       <div className="social-links-wrapper">
         <ul className="contact-links">
-          {contactLinks.map(link => (
+          {contactLinks.map((link) => (
             <Link className="contact-link">
               <Tooltip title={link.tooltip} arrow>
                 <IconButton
