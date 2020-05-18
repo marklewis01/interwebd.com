@@ -9,7 +9,8 @@ import { Nav } from "./components/Nav";
 import ScrollToTop from "./components/ScrollToTop";
 
 // routes/pages
-import { Resume } from "./routes";
+import HomeScreen from "./routes/Home";
+import ResumeScreen from "./routes/Resume";
 
 // styles
 import "./styles.scss";
@@ -26,7 +27,8 @@ export default function App() {
       <Nav />
       <div className="main">
         <Router onChange={handleRouteChange}>
-          <Resume path="/" />
+          <HomeScreen path="/" />
+          <ResumeScreen path="/resume" />
           <Error default />
         </Router>
         <ScrollToTop />

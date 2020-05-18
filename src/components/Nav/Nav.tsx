@@ -8,7 +8,7 @@ import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
   LocationOn as LocationIcon,
-  Mail as MailIcon,
+  Mail as MailIcon
 } from "@material-ui/icons";
 
 // custom comps
@@ -54,34 +54,34 @@ export const Nav = () => {
     {
       icon: <MailIcon />,
       link: "mailto:mark@interwebd.com",
-      tooltip: "Send me an Email",
+      tooltip: "Send me an Email"
     },
     {
       icon: <LinkedInIcon />,
       link: "https://www.linkedin.com/in/marklewis01",
-      tooltip: "See my LinkedIn",
+      tooltip: "See my LinkedIn"
     },
     {
       icon: <GitHubIcon />,
       link: "https://github.com/marklewis01",
-      tooltip: "See my GitHub",
+      tooltip: "See my GitHub"
     },
     {
       icon: <SOIcon />,
       link: "https://stackoverflow.com/users/9330692/m-lewis",
-      tooltip: "See my StackOverflow",
-    },
+      tooltip: "See my StackOverflow"
+    }
   ];
 
   const navPageLinks = [
     {
       label: "Projects",
-      path: "/",
+      path: "/"
     },
     {
       label: "Resume",
-      path: "/resume",
-    },
+      path: "/resume"
+    }
   ];
 
   return (
@@ -119,6 +119,11 @@ export const Nav = () => {
             </Link>
           ))}
         </ul>
+      </div>
+      <div className="resume">
+        <Link className="contact-link" href="/resume">
+          <p>Resume</p>
+        </Link>
       </div>
     </div>
   );

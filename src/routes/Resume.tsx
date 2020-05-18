@@ -1,187 +1,224 @@
 import { h, Fragment } from "preact";
 
 // Mui
-import {
-  Box,
-  Grid,
-  Hidden,
-  List,
-  ListItem,
-  Typography
-} from "@material-ui/core";
+import { Grid, List, ListItem, Paper, Typography } from "@material-ui/core";
 import {
   ChevronRight as SubArrowIcon,
   Check as StopIcon
 } from "@material-ui/icons";
 
-// Comps
-import { Project } from "../components/Project";
-
 // data
-import { experience, projects, skills } from "../data";
+import { education, experience, projects, skills } from "../data";
 
-export const Resume = ({ path }: { path: string }) => (
+export default ({ path }: { path: string }) => (
   <Grid className="resume">
-    <Grid
-      container
-      justify="space-between"
-      className="header"
-      alignItems="center"
-    >
-      <Grid item xs={12} sm>
-        <Typography variant="h1">Mark Lewis</Typography>
+    <Paper className="page">
+      <HeaderIntro />
+      <Grid container spacing={2} className="lhs-col">
+        <Grid item xs={12} md>
+          <Grid container direction="column">
+            <Projects />
+            <TechStacks />
+            <Experience />
+          </Grid>
+        </Grid>
+        <Grid item xs={12} md="auto" className="rhs-col">
+          <Grid container direction="column">
+            <PersonalInfo />
+            <Skills />
+            <Interests />
+            <Education />
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        sm
-        container
-        direction="column"
-        alignItems="flex-end"
-        className="contact"
-      >
-        <p>mark@someemail.com</p>
-        <p>mark@someemail.com</p>
-        <p>mark@someemail.com</p>
-      </Grid>
-      <Grid container>
-        <Typography variant="h4" className="mini-bio">
-          I get a kick out of building ideas and understanding how and why
-          things work
-        </Typography>
-      </Grid>
-    </Grid>
+    </Paper>
+  </Grid>
+);
 
-    <Box className="content">
-      <Grid container className="section projects">
-        <Grid item xs={12}>
-          <h2 className="section-heading">Projects</h2>
+const HeaderIntro = () => (
+  <Grid container direction="column">
+    <Typography variant="h1">Mark Lewis</Typography>
+    <Typography variant="h2">JavaScript Developer</Typography>
+    <Typography>
+      I'm happiest when building. Currently enjoying anything Node, React or
+      React Native, whilst utilising TypeScript to produce better code!{" "}
+    </Typography>
+  </Grid>
+);
+
+const Experience = () => (
+  <Grid item container className="experience" direction="column">
+    <Typography variant="h3">Experience</Typography>
+    {experience
+      .filter((a) => a.includeInResume)
+      .map((role) => (
+        <Grid container className="job">
+          <Grid item xs className="left-column">
+            <Typography className="date">{role.date}</Typography>
+          </Grid>
+          <Grid item xs className="job-details">
+            <Grid className="title">
+              <Typography className="role" display="inline">
+                {role.title}
+              </Typography>
+              <Typography className="leftDivider subtitle" display="inline">
+                {role.company}
+              </Typography>
+            </Grid>
+            <Typography>{role.description}</Typography>
+            {role.highlights ? (
+              <ul>
+                {role.highlights.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            ) : null}
+          </Grid>
         </Grid>
-        {projects.map(project => (
-          <Project project={project} />
-        ))}
-      </Grid>
-      <Grid container className="section skills" spacing={2}>
-        <Grid item xs={12}>
-          <h2 className="section-heading">Technical Proficiencies</h2>
-        </Grid>
-        <Hidden mdDown>
-          <Grid item sm="auto" className="lhs-col" />
-        </Hidden>
-        {Object.values(skills.technicalSkills)
-          .sort((a, b) => a.order - b.order)
-          .map(category => (
-            <Grid item xs={6} sm md className="category">
-              <h3>{category.label}</h3>
-              {category.skills ? (
-                <List dense>
-                  {category.skills.map(skill =>
-                    Array.isArray(skill) ? (
-                      <Fragment>
-                        <ListItem disableGutters>{skill[0]}</ListItem>
-                        <List disablePadding>
-                          {Array.isArray(skill[1])
-                            ? skill[1].map(s => (
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    alignItems: "center"
-                                  }}
-                                >
-                                  <SubArrowIcon
-                                    fontSize="small"
-                                    color="secondary"
-                                  />
-                                  <ListItem disableGutters dense>
-                                    {s}
-                                  </ListItem>
-                                </div>
-                              ))
-                            : null}
-                        </List>
-                      </Fragment>
-                    ) : (
-                      <ListItem disableGutters>{skill}</ListItem>
-                    )
-                  )}
-                </List>
+      ))}
+  </Grid>
+);
+
+const Projects = () => (
+  <Grid item container className="projects" direction="column">
+    <Typography variant="h3">Recent Projects</Typography>
+    {projects
+      .filter((a) => a.includeInResume)
+      .map((p) => (
+        <Grid container className="project">
+          <Grid item xs className="left-column">
+            <Typography className="date">{p.date}</Typography>
+          </Grid>
+          <Grid item xs className="project-details">
+            <Grid className="title">
+              <Typography className="role" display="inline">
+                {p.label}
+              </Typography>
+              {p.web || p.codebase ? (
+                <Typography className="leftDivider subtitle" display="inline">
+                  {p.web ? p.web : p.codebase ? p.codebase : ""}
+                </Typography>
               ) : null}
             </Grid>
-          ))}
-      </Grid>
-      <Grid container className="section skills" spacing={2}>
-        <Grid item xs={12}>
-          <h2 className="section-heading">Soft Skills</h2>
+            <Typography className="project-text">
+              {p.shortDescription
+                ? p.shortDescription
+                : p.description
+                ? p.description
+                : ""}
+            </Typography>
+            {p.keywords
+              ? p.keywords.map((w, idx) => (
+                  <Fragment>
+                    <Typography className="project-keyword">
+                      {w}
+                      {idx !== p.keywords.length - 1 && " • "}
+                    </Typography>
+                  </Fragment>
+                ))
+              : null}
+          </Grid>
         </Grid>
-        <Hidden mdDown>
-          <Grid item sm="auto" className="lhs-col" />
-        </Hidden>
-        <Grid item xs={12} sm={4} className="category">
-          <List dense>
-            <ListItem disableGutters>Planning</ListItem>
-            <ListItem disableGutters>Communication</ListItem>
-            <ListItem disableGutters>
-              Strong customer empathy and Product instincts
-            </ListItem>
-          </List>
-        </Grid>
-      </Grid>
-      <Grid container className="section experience" spacing={2}>
-        <Grid item xs={12}>
-          <h2 className="section-heading">Experience</h2>
-        </Grid>
-        {experience.map(job => (
-          <Grid container className="job">
-            <Grid
-              item
-              sm={12}
-              lg="auto"
-              className="lhs-col company-details"
-              container
-            >
-              <img src={job.logo} className="logo" />
-              <Grid item>
-                <h3>{job.company}</h3>
-                <Typography className="duration">{job.date}</Typography>
-              </Grid>
-            </Grid>
-            <Grid item sm lg className="wrap-collapsible">
-              <input
-                id={`${job.company}-collapsible`}
-                class="toggle"
-                type="checkbox"
-                checked={true}
-              />
-              <label for={`${job.company}-collapsible`} class="title">
-                {job.title}
-              </label>
+      ))}
+  </Grid>
+);
 
-              <Grid className="description">
-                <Typography className="content-inner">
-                  {job.description.split("<br />").map(s => (
-                    <p>{s}</p>
-                  ))}
-                </Typography>
-                {job.highlights ? (
-                  <List dense>
-                    {job.highlights.map(item => (
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center"
-                        }}
-                      >
-                        <StopIcon className="bullet" color="secondary" />
-                        <ListItem>{item}</ListItem>
-                      </div>
-                    ))}
-                  </List>
-                ) : null}
-              </Grid>
-            </Grid>
+type Skill = (string | (string | string[])[])[];
+
+function stringifySkills(skills: Skill) {
+  const text = [];
+  for (const skill of skills) {
+    if (Array.isArray(skill)) {
+      text.push(skill[0]);
+    } else {
+      text.push(skill);
+    }
+  }
+  return text;
+}
+
+const TechStacks = () => (
+  <Grid item container direction="column">
+    <Typography variant="h3">Tech Stacks</Typography>
+    <Grid container spacing={1}>
+      {Object.values(skills.technicalSkills)
+        .sort((a, b) => a.order - b.order)
+        .map((category) => (
+          <Grid item xs>
+            <Typography className="skill-category">
+              {category.label.split(" ").pop()}:{" "}
+            </Typography>
+            {stringifySkills(category.skills).map((skill) => (
+              <Typography className="skill">{skill}</Typography>
+            ))}
           </Grid>
         ))}
+    </Grid>
+  </Grid>
+);
+
+const Education = () => (
+  <Grid item container direction="column">
+    <Typography variant="h3">Education</Typography>
+
+    {education.map((s) => (
+      <Grid container direction="column">
+        <Typography className="field" display="block">
+          {s.year}
+        </Typography>
+        <Typography display="block">
+          {s.name} {s.honors ? " - " + s.honors : ""}
+        </Typography>
+        <Typography className="subtitle value" display="block">
+          {s.school}
+        </Typography>
       </Grid>
-    </Box>
+    ))}
+  </Grid>
+);
+
+const PersonalInfo = () => (
+  <Grid item container direction="column">
+    <Typography variant="h3">Personal Info</Typography>
+    {[
+      ["Address", "Sydney, NSW Australia"],
+      ["Phone", "+61 417 446 739"],
+      ["Email", "marklewis01@hotmail.com"],
+      ["LinkedIn", "linkedin.com/in/marklewis01"],
+      ["Github", "github.com/marklewis01"]
+    ].map((item) => (
+      <Fragment>
+        <Typography className="field">{item[0]}</Typography>
+        <Typography className="value">{item[1]}</Typography>
+      </Fragment>
+    ))}
+  </Grid>
+);
+
+const Skills = () => (
+  <Grid item>
+    <Typography variant="h3">Skills</Typography>
+    {[
+      "Problem Solving",
+      "Accountability",
+      "Communication",
+      "Process Optimization",
+      "Empathy"
+    ].map((i) => (
+      <Typography className="value">{i}</Typography>
+    ))}
+  </Grid>
+);
+
+const Interests = () => (
+  <Grid item container direction="column">
+    <Typography variant="h3">Interests</Typography>
+    {[
+      "Business ideas & strategy",
+      "Personal fitness and wellbeing",
+      "Tinkering and building to understand things"
+    ].map((item) => (
+      <Typography className="value">{item}</Typography>
+    ))}
   </Grid>
 );

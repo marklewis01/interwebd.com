@@ -47,11 +47,7 @@ export const skills = {
     languages: {
       order: 0,
       label: "Languages",
-      skills: [
-        ["JavaScript (ES5/ES6)", ["TypeScript"]],
-        "Markdown",
-        "HTML5/CSS3"
-      ]
+      skills: ["JavaScript (ES5/6)", "TypeScript", "Markdown", "HTML5/CSS3"]
     },
     infrastructure: {
       order: 3,
@@ -78,17 +74,16 @@ export const skills = {
         "React",
         "React-Redux",
         ["React-Native", ["expo"]],
-        "Material-UI",
         "GatsbyJS",
         "Preact",
         ["Node", ["Express"]],
-        "Socket.IO"
+        "Socket.io"
       ]
     },
     databases: {
       order: 1,
       label: "Database",
-      skills: ["MySQL", "Google Cloud Firestore (NoSql)"]
+      skills: ["MySQL", "SQLite", "Google Cloud Firestore (NoSql)"]
     },
     tools: {
       order: 4,
@@ -100,11 +95,26 @@ export const skills = {
 
 export const projects: IProject[] = [
   {
-    label: "Interwebd",
+    label: "Time-Lapse App",
     description:
-      "This very site. I decided to showcase some of my frontend skills, as well, it presented a chance to get to try out Preact.js. Preact is a 3kB React alternative, so this site it super small in footprint.",
-    keywords: ["Preact", "Material-UI"],
-    codebase: "https://github.com/marklewis01/interwebd.com"
+      "My first React Native app. A small but neat app idea to explore React Native and Expo APIs with.",
+    keywords: ["React Native", "Expo.io", "React-Native-Paper", "TypeScript"],
+    codebase: "https://github.com/marklewis01/time-lapse",
+    date: 2020,
+    includeInResume: true
+  },
+  {
+    label: "interwebd.com",
+    description:
+      "This very site. I decided to showcase some of my frontend skills, it also presented a chance to get to try out Preact.js, a 3kB React alternative.",
+    keywords: [
+      "Preact",
+      "Material-UI",
+      "Continual Deployment: GH -> Vercel (formerly ZEIT)"
+    ],
+    codebase: "https://github.com/marklewis01/interwebd.com",
+    date: 2020,
+    includeInResume: true
   },
   {
     label: "Finishes v3",
@@ -119,7 +129,9 @@ export const projects: IProject[] = [
           thumbnail: t_finishes_main
         }
       }
-    ]
+    ],
+    date: 2020,
+    includeInResume: true
   },
   {
     label: "GatsbyJS Starter Site",
@@ -157,7 +169,8 @@ export const projects: IProject[] = [
           thumbnail: t_gatsby_pricing
         }
       }
-    ]
+    ],
+    date: 2018
   },
   {
     label: "Firebase Starter",
@@ -195,10 +208,13 @@ export const projects: IProject[] = [
           thumbnail: t_fbStart_mobile
         }
       }
-    ]
+    ],
+    date: 2018
   },
   {
     label: "Junglefy",
+    shortDescription:
+      "A customized WordPress themed site. My first paid project.",
     description:
       "This very site. I decided to showcase some of my frontend skills, as well, it presented a chance to get to try out Preact.js. Preact is a 3kB React alternative, so this site it super small in footprint.",
     keywords: ["WordPress"],
@@ -232,7 +248,8 @@ export const projects: IProject[] = [
           thumbnail: t_junglefy_contact
         }
       }
-    ]
+    ],
+    date: 2017
   }
 ];
 
@@ -264,68 +281,65 @@ export const experience: IExperience[] = [
         world business needs.`
   },
   {
+    date: "Sep 2017 - present",
+    company: "Finishes / Interwebd",
+    title: "Founder / Freelancer",
+    description: `I have self-taught myself to code from late 2017 and today confidently build fullstack projects in JavaScript/TypeScript utilising the Node, React, and React Native libraries.`,
+    highlights: [
+      "Building my first SAAS prototype (Finishes) and successfully piloting it with independent industry customers;",
+      "Discovering and learning new libraries/platforms to realize my ideas, including: React, Firebase, Node, PDF-generating libraries, databases (both SQL/NoSQL), Sockets, and the GCP/AWS ecosystems;"
+    ],
+    includeInResume: true
+  },
+  {
     date: "Nov 2014 - Sep 2017",
     company: "Junglefy",
     logo: logoJunglefy,
     title: "Senior Estimator",
     url: "https://junglefy.com.au",
-    description: `Junglefy are one of Australia's leading vertical garden and green infrastructure
-          organisations. The attraction was immediate: work with a leading
-          company who specialize in growing nature where it typically does not -
-          our city's harsh built environment! <br />
-          Not a predicable step, however I felt the need to pause my IT career
-          and focus on getting more nature back into our world. <br />
-          During my time at Junglefy I was able to experience most aspects of
-          the business, starting by working onsite within the construction team,
-          to finishing in the sales team where I became the senior estimator.`,
+    description: `I wanted to try something completely new and help bring more nature back into our world. Junglefy are Australia's leading vertical garden specialists.  I began in the construction team and progressed through to Sales as the Senior Estimator.`,
     highlights: [
-      "Ability to quickly gain proficiency and progress in a new industry/field",
-      "Understand and contribute to a new aspect of the business: sales & business development",
-      "Practice and improve my communications skills, both up/down the business and also client facing"
-    ]
+      "Ability to quickly gain proficiency and progress in a new industry/field;",
+      "Work with all elements of the business, including client briefings, tender proposals, project finance forecasting and handovers/reviews;",
+      "Contribute in a business development capacity to the company;"
+    ],
+    includeInResume: true
   },
   {
     date: "Feb 2014 - Oct 2014",
     company: "Simply",
     logo: logoSimply,
     title: "Project Manager",
-    description: `Simply is a web development agency located in Sydney Australia, specializing in custom BigCommerce and WordPress installations.`,
+    description: `Simply was a web development agency located in Sydney Australia, specializing in custom BigCommerce and WordPress installations.`,
     highlights: [
-      "Manage development and testing tasks, and all project deliverables",
-      "Manage scope/change approvals, and maintain up-to-date project status reporting",
-      "Progress/Stage Invoicing",
-      "Work closely with development team (remote) to deliver project requirements",
-      "Manage customisations and subsequent as-built documents",
-      "Contribute to digital strategy scoping and requirements"
-    ]
+      "Manage project deliverables, scope and change approvals, and progress/stage invoicing;",
+      "Manage remote development teams to deliver project requirements, customisations and as-built documentation;"
+    ],
+    includeInResume: true
   },
   {
     date: "Aug 2012 - Sep 2013",
     company: "Platinum Direct Finance Aust.",
     logo: logoPDFA,
     title: "IT Consultant [Contract Role]",
-    description: `Platinum Direct Finance Australia provide finance and insurance
-        brokerage services for automotive and machinery purchases. This project
-        resulted from the need to update existing office infrastructure for
-        approximately 30 staff, as well as enhance the security and
-        maintainability of the network.`,
+    description: `This engagement required updating existing office server/networking infrastructure (appx. 30 staff), as well as providing an enhanced security system.`,
     highlights: [
-      "Initial discovery/scoping, and subsequent planning/design of new systems",
-      "Selection, procurement, build and implementation of server hardware",
-      "As-built documentation"
-    ]
+      "Project discovery/scoping, planning, design, procurement and implementation of new systems;",
+      "As-built documentation and training;"
+    ],
+    includeInResume: true
   },
   {
     date: "Mar 2010 - Jun 2012",
     company: "NSW Department of Education",
     logo: logoDEC,
-    title: "Senior VMware Engineer - Contract Role (made permanent)",
-    description: `The NSW Department of Education is one of the largest IT networks in the southern hemisphere. I worked in a team of four responsible for the private cloud compute infrastructure.`,
+    title: "Senior VMware Engineer",
+    description: `The Department is one of the largest IT networks in the southern hemisphere. I worked in a team of four responsible for the directorate's private cloud compute infrastructure.`,
     highlights: [
-      "Management of over 1000 virtual machines across 200+ physical hosts",
-      "Planning and scaling of environment, including upgrade and migration works",
-      "Scripted deployment of and updates to physical hosts"
-    ]
+      "Planning, provisioning and scaling of the environment, including upgrade and migration works;",
+      "Management/orchestration of 1000+ VMs on 200+ physical hosts, housed across two enterprise-grade data centres;"
+    ],
+    includeInResume: true
   },
   {
     date: "Jun 2008 - Mar 2010",
@@ -338,5 +352,19 @@ export const experience: IExperience[] = [
       "vSphere 4 Upgrade, including requirements scoping, build and migration work",
       "Being promoted from Level 1 Support team straight to the Level 3 Systems Team, through demonstrated design and initiative to work on more technical platforms."
     ]
+  }
+];
+
+export const education = [
+  {
+    name: "Bachelor Design (Industrial)",
+    honors: "2nd Class Honors",
+    school: "University of Technology, Sydney",
+    year: 2003
+  },
+  {
+    name: "Higher School Certificate",
+    school: "The Hills Grammar School, Sydney",
+    year: 1999
   }
 ];

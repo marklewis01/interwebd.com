@@ -200,10 +200,10 @@ h3 {
 }
 
 /**
- * Resume
+ * Home Screen
  */
 
-.resume {
+.home {
   .header {
     border-bottom: 2px solid $grey-main;
     display: none;
@@ -364,6 +364,117 @@ h3 {
     .project {
       margin: 1rem 0 0.5rem;
     }
+  }
+}
+
+/**
+ * Resume
+ */
+
+.resume {
+  .page {
+    border: 1px solid #ccc;
+    border-radius: unset;
+    max-width: 21cm;
+    height: 29.7cm;
+    padding: 0.8cm 0.8cm 1.5cm;
+  }
+  h1,
+  h2,
+  h3 {
+    color: #555;
+  }
+  h1 {
+    font-size: 24pt;
+    font-weight: bold;
+    margin: unset;
+  }
+  h2 {
+    font-size: 16pt;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    border-bottom: 1px solid #ccc;
+    font-size: 14pt;
+    font-weight: 400;
+    margin: 1.25rem 0 0.75rem;
+    padding-bottom: 4px;
+  }
+  p {
+    font-size: 10.5pt;
+    letter-spacing: 0.01px;
+    line-height: 1.4;
+  }
+  ul {
+    margin: 6px 12px;
+    padding: 0;
+  }
+  li {
+    line-height: 1.35;
+    letter-spacing: unset;
+    margin-bottom: 6px;
+  }
+  .lhs-col {
+    .left-column {
+      max-width: 18mm;
+    }
+  }
+  .rhs-col {
+    max-width: 5.2cm;
+    p {
+      font-size: 10pt;
+    }
+    .field {
+      font-weight: bold;
+      line-height: 12pt;
+    }
+    .value {
+      margin-bottom: 0.65rem;
+    }
+  }
+  .job,
+  .project {
+    margin: 0.5rem 0;
+  }
+  .job-details,
+  .project-details {
+    padding-left: 4px;
+  }
+  .date {
+    font-size: 10pt;
+    line-height: 12pt;
+  }
+  .title,
+  .project-text {
+    margin-bottom: 0.5rem;
+  }
+  .role {
+    line-height: 12pt;
+    font-size: 12pt;
+    margin-bottom: 1rem;
+  }
+  .subtitle {
+    color: #555;
+    font-size: 10.5pt;
+    font-weight: 300;
+    line-height: 12pt;
+  }
+  .leftDivider {
+    border-left: 1px solid #ccc;
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .project-keyword {
+    font-weight: 300;
+    display: inline;
+  }
+  .skill-category {
+    font-weight: bold;
+  }
+  .skill {
+    font-size: 9.5pt;
+    margin-bottom: 6px;
+    line-height: 12pt;
   }
 }
 

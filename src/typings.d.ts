@@ -4,26 +4,31 @@ declare module "*.json";
 declare module "*.svg";
 
 interface IExperience {
-  date: string;
   company: string;
+  date: string;
+  description: string;
+  highlights?: string[];
+  includeInResume?: boolean;
   logo?: any;
   title: string;
   url?: string;
-  description: string;
-  highlights?: string[];
 }
 
 interface IProject {
   label: string;
+  shortDescription?: string;
   description: string;
   keywords?: string[];
+  date: number;
   codebase?: string;
   web?: string;
   images?: {
     caption?: string;
     source: {
       download?: string;
-      regular:  string;
+      regular: string;
       thumbnail?: string;
     };
-  }[]
+  }[];
+  includeInResume?: boolean;
+}
