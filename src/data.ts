@@ -47,7 +47,13 @@ export const skills = {
     languages: {
       order: 0,
       label: "Languages",
-      skills: ["JavaScript (ES5/6)", "TypeScript", "Markdown", "HTML5/CSS3"]
+      skills: [
+        "JavaScript (ES5/6)",
+        "TypeScript",
+        "Markdown",
+        "HTML",
+        "CSS / SCSS"
+      ]
     },
     infrastructure: {
       order: 3,
@@ -63,8 +69,8 @@ export const skills = {
             "Hosting"
           ]
         ],
-        "Amazon Web Services (AWS)",
-        "Google Cloud Platform (GCP)"
+        "AWS CodeDeploy, CodePipeline, ElasticBeanstalk",
+        "GCP Compute Engine"
       ]
     },
     frameworks: {
@@ -72,12 +78,12 @@ export const skills = {
       label: "Frameworks / Libraries",
       skills: [
         "React",
-        "React-Redux",
         ["React-Native", ["expo"]],
-        "GatsbyJS",
-        "Preact",
+        "React-Redux",
         ["Node", ["Express"]],
-        "Socket.io"
+        "Socket.io",
+        "Preact",
+        "GatsbyJS"
       ]
     },
     databases: {
@@ -88,7 +94,7 @@ export const skills = {
     tools: {
       order: 4,
       label: "Development Tools",
-      skills: ["Git", "Puppeteer", "Webpack", "CSS / SCSS"]
+      skills: ["Git", "Webpack", "Puppeteer"]
     }
   }
 };
@@ -96,9 +102,14 @@ export const skills = {
 export const projects: IProject[] = [
   {
     label: "Time-Lapse App",
-    description:
-      "My first React Native app. A small but neat app idea to explore React Native and Expo APIs with.",
-    keywords: ["React Native", "Expo.io", "React-Native-Paper", "TypeScript"],
+    description: `Easily create projects, take photos (with overlays), and compare progress  with a few clicks. My React Native app to explore React Native and Expo APIs.`,
+    keywords: [
+      "React Native",
+      "Expo.io",
+      "SQLite",
+      "TypeScript",
+      "React-Native-Paper"
+    ],
     codebase: "https://github.com/marklewis01/time-lapse",
     date: 2020,
     includeInResume: true
@@ -106,11 +117,12 @@ export const projects: IProject[] = [
   {
     label: "interwebd.com",
     description:
-      "This very site. I decided to showcase some of my frontend skills, it also presented a chance to get to try out Preact.js, a 3kB React alternative.",
+      "This portfolio site to demonstrate some of my frontend skills, whilst also a chance to explore Preact.js, a 3kB React alternative.",
     keywords: [
       "Preact",
-      "Material-UI",
-      "Continual Deployment: GH -> Vercel (formerly ZEIT)"
+      "Continual Deployment: Github -> ZEIT",
+      "SCSS",
+      "Material-UI"
     ],
     codebase: "https://github.com/marklewis01/interwebd.com",
     date: 2020,
@@ -120,7 +132,7 @@ export const projects: IProject[] = [
     label: "Finishes v3",
     description:
       "As a result of feedback and a clearer understanding of the potential customer use case, I am currently rebuilding the Finishes platform in order to migrate the database to a relational database.",
-    keywords: ["MySQL", "Node", "Express", "Redux", "TypeScript"],
+    keywords: ["MySQL", "Node", "Express", "React", "Redux", "TypeScript"],
     web: "https://finishes.app",
     images: [
       {
@@ -130,11 +142,12 @@ export const projects: IProject[] = [
         }
       }
     ],
-    date: 2020,
+    date: 2019,
     includeInResume: true
   },
   {
     label: "GatsbyJS Starter Site",
+    shortDescription: "",
     description:
       "A starter template site built to get an understanding of the GatsbyJS framework. The site is responsive, utilising both JSS and SASS, and has a mix of both stateful and stateless components.",
     keywords: ["Gatsby", "JSS", "Material-UI", "SASS"],
@@ -170,10 +183,12 @@ export const projects: IProject[] = [
         }
       }
     ],
-    date: 2018
+    date: 2018,
+    includeInResume: true
   },
   {
     label: "Firebase Starter",
+    shortDescription: "",
     description:
       "A starter template featuring a React front-end and a Google Firebase backend. The template has authentication (using Firebase Authentication), the typical login t_gatsby_features, and protected routes. State is managed using the lightweight Unstated.js library.",
     keywords: [
@@ -209,15 +224,14 @@ export const projects: IProject[] = [
         }
       }
     ],
-    date: 2018
+    date: 2018,
+    includeInResume: true
   },
   {
-    label: "Junglefy",
-    shortDescription:
-      "A customized WordPress themed site. My first paid project.",
-    description:
-      "This very site. I decided to showcase some of my frontend skills, as well, it presented a chance to get to try out Preact.js. Preact is a 3kB React alternative, so this site it super small in footprint.",
-    keywords: ["WordPress"],
+    label: "Junglefy website",
+    shortDescription: "",
+    description: "Custom WordPress and hosting.",
+    keywords: ["WordPress", "CSS"],
     web: "https://junglefy.com.au",
     images: [
       {
@@ -249,13 +263,14 @@ export const projects: IProject[] = [
         }
       }
     ],
-    date: 2017
+    date: 2017,
+    includeInResume: true
   }
 ];
 
 export const experience: IExperience[] = [
   {
-    date: "Dec 2017 – Present",
+    date: "12/17 – Present",
     company: "Finishes",
     logo: logoFinishes,
     title: "Founder",
@@ -271,7 +286,7 @@ export const experience: IExperience[] = [
     ]
   },
   {
-    date: "Mar 2017 – Present",
+    date: "03/17 – Present",
     company: "Interweb'd",
     logo: logoInterwebd,
     title: "Director / Web Developer",
@@ -281,7 +296,7 @@ export const experience: IExperience[] = [
         world business needs.`
   },
   {
-    date: "Sep 2017 - present",
+    date: "09/17 - present",
     company: "Finishes / Interwebd",
     title: "Founder / Freelancer",
     description: `I have self-taught myself to code from late 2017 and today confidently build fullstack projects in JavaScript/TypeScript utilising the Node, React, and React Native libraries.`,
@@ -292,7 +307,7 @@ export const experience: IExperience[] = [
     includeInResume: true
   },
   {
-    date: "Nov 2014 - Sep 2017",
+    date: "11/14 - 09/17",
     company: "Junglefy",
     logo: logoJunglefy,
     title: "Senior Estimator",
@@ -306,7 +321,7 @@ export const experience: IExperience[] = [
     includeInResume: true
   },
   {
-    date: "Feb 2014 - Oct 2014",
+    date: "04/14 - 10/14",
     company: "Simply",
     logo: logoSimply,
     title: "Project Manager",
@@ -318,7 +333,7 @@ export const experience: IExperience[] = [
     includeInResume: true
   },
   {
-    date: "Aug 2012 - Sep 2013",
+    date: "08/12 - 09/13",
     company: "Platinum Direct Finance Aust.",
     logo: logoPDFA,
     title: "IT Consultant [Contract Role]",
@@ -330,7 +345,7 @@ export const experience: IExperience[] = [
     includeInResume: true
   },
   {
-    date: "Mar 2010 - Jun 2012",
+    date: "03/10 - 06/12",
     company: "NSW Department of Education",
     logo: logoDEC,
     title: "Senior VMware Engineer",

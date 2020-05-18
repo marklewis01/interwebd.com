@@ -11,11 +11,11 @@ import {
 import { education, experience, projects, skills } from "../data";
 
 export default ({ path }: { path: string }) => (
-  <Grid className="resume">
+  <Grid container className="resume">
     <Paper className="page">
       <HeaderIntro />
-      <Grid container spacing={2} className="lhs-col">
-        <Grid item xs={12} md>
+      <Grid item container spacing={2}>
+        <Grid item xs={12} md className="lhs-col">
           <Grid container direction="column">
             <Projects />
             <TechStacks />
@@ -25,9 +25,9 @@ export default ({ path }: { path: string }) => (
         <Grid item xs={12} md="auto" className="rhs-col">
           <Grid container direction="column">
             <PersonalInfo />
+            <Education />
             <Skills />
             <Interests />
-            <Education />
           </Grid>
         </Grid>
       </Grid>
@@ -36,7 +36,7 @@ export default ({ path }: { path: string }) => (
 );
 
 const HeaderIntro = () => (
-  <Grid container direction="column">
+  <Grid container direction="column" className="header">
     <Typography variant="h1">Mark Lewis</Typography>
     <Typography variant="h2">JavaScript Developer</Typography>
     <Typography>
@@ -95,13 +95,16 @@ const Projects = () => (
                 {p.label}
               </Typography>
               {p.web || p.codebase ? (
-                <Typography className="leftDivider subtitle" display="inline">
+                <Typography
+                  className="leftDivider subtitle link"
+                  display="inline"
+                >
                   {p.web ? p.web : p.codebase ? p.codebase : ""}
                 </Typography>
               ) : null}
             </Grid>
             <Typography className="project-text">
-              {p.shortDescription
+              {p.shortDescription !== undefined
                 ? p.shortDescription
                 : p.description
                 ? p.description
@@ -110,7 +113,7 @@ const Projects = () => (
             {p.keywords
               ? p.keywords.map((w, idx) => (
                   <Fragment>
-                    <Typography className="project-keyword">
+                    <Typography className="skill" display="inline">
                       {w}
                       {idx !== p.keywords.length - 1 && " • "}
                     </Typography>
@@ -139,7 +142,7 @@ function stringifySkills(skills: Skill) {
 
 const TechStacks = () => (
   <Grid item container direction="column">
-    <Typography variant="h3">Tech Stacks</Typography>
+    <Typography variant="h3">Technical Proficiencies</Typography>
     <Grid container spacing={1}>
       {Object.values(skills.technicalSkills)
         .sort((a, b) => a.order - b.order)

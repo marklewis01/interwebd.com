@@ -197,6 +197,9 @@ h3 {
       }
     }
   }
+  @media print {
+    display: none;
+  }
 }
 
 /**
@@ -378,6 +381,14 @@ h3 {
     max-width: 21cm;
     height: 29.7cm;
     padding: 0.8cm 0.8cm 1.5cm;
+    @media print {
+      border: unset;
+      box-shadow: unset;
+      width: 100%;
+      max-width: unset;
+      height: unset;
+      padding: unset;
+    }
   }
   h1,
   h2,
@@ -403,7 +414,8 @@ h3 {
   p {
     font-size: 10.5pt;
     letter-spacing: 0.01px;
-    line-height: 1.4;
+    line-height: 1.3;
+    font-weight: 300;
   }
   ul {
     margin: 6px 12px;
@@ -414,18 +426,22 @@ h3 {
     letter-spacing: unset;
     margin-bottom: 6px;
   }
+  // .header {
+  //   width: 100%;
+  // }
   .lhs-col {
+    flex: 1;
     .left-column {
-      max-width: 18mm;
+      max-width: 14mm;
     }
   }
   .rhs-col {
-    max-width: 5.2cm;
+    flex-basis: 5.2cm;
     p {
       font-size: 10pt;
     }
     .field {
-      font-weight: bold;
+      font-weight: 500;
       line-height: 12pt;
     }
     .value {
@@ -446,11 +462,12 @@ h3 {
   }
   .title,
   .project-text {
-    margin-bottom: 0.5rem;
+    margin-bottom: 3px;
   }
   .role {
-    line-height: 12pt;
+    font-weight: 400;
     font-size: 12pt;
+    line-height: 12pt;
     margin-bottom: 1rem;
   }
   .subtitle {
@@ -459,19 +476,20 @@ h3 {
     font-weight: 300;
     line-height: 12pt;
   }
+  .link {
+    font-size: 10pt;
+  }
   .leftDivider {
     border-left: 1px solid #ccc;
     margin-left: 0.5rem;
     padding-left: 0.5rem;
   }
-  .project-keyword {
-    font-weight: 300;
-    display: inline;
-  }
   .skill-category {
-    font-weight: bold;
+    font-weight: 500;
+    margin-bottom: 4px;
   }
   .skill {
+    font-weight: 300;
     font-size: 9.5pt;
     margin-bottom: 6px;
     line-height: 12pt;
