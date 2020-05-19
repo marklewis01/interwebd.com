@@ -82,8 +82,7 @@ export const skills = {
         "React-Redux",
         ["Node", ["Express"]],
         "Socket.io",
-        "Preact",
-        "GatsbyJS"
+        "Preact / GatsbyJS"
       ]
     },
     databases: {
@@ -101,8 +100,8 @@ export const skills = {
 
 export const projects: IProject[] = [
   {
-    label: "Time-Lapse App",
-    description: `Easily create projects, take photos (with overlays), and compare progress  with a few clicks. My React Native app to explore React Native and Expo APIs.`,
+    label: "Time-Lapse mobile app",
+    description: `Easily create projects, take photos (with overlays), and compare progress in a slider. A React Native app to explore APIs and the Expo framework.`,
     keywords: [
       "React Native",
       "Expo.io",
@@ -131,7 +130,7 @@ export const projects: IProject[] = [
   {
     label: "Finishes v3",
     description:
-      "As a result of feedback and a clearer understanding of the potential customer use case, I am currently rebuilding the Finishes platform in order to migrate the database to a relational database.",
+      "The third iteration, resulting from pilot customer feedback, of a SaaS offering for the building industry.",
     keywords: ["MySQL", "Node", "Express", "React", "Redux", "TypeScript"],
     web: "https://finishes.app",
     images: [
@@ -183,8 +182,8 @@ export const projects: IProject[] = [
         }
       }
     ],
-    date: 2018,
-    includeInResume: true
+    date: 2018
+    // includeInResume: true
   },
   {
     label: "Firebase Starter",
@@ -302,7 +301,7 @@ export const experience: IExperience[] = [
     description: `I have self-taught myself to code from late 2017 and today confidently build fullstack projects in JavaScript/TypeScript utilising the Node, React, and React Native libraries.`,
     highlights: [
       "Building my first SAAS prototype (Finishes) and successfully piloting it with independent industry customers;",
-      "Discovering and learning new libraries/platforms to realize my ideas, including: React, Firebase, Node, PDF-generating libraries, databases (both SQL/NoSQL), Sockets, and the GCP/AWS ecosystems;"
+      "Discovering and learning new libraries/platforms to realize my ideas, including: React, Firebase, Node, PDF-generating libraries, databases (SQL/NoSQL), Sockets, and GCP/AWS ecosystems;"
     ],
     includeInResume: true
   },
@@ -312,11 +311,11 @@ export const experience: IExperience[] = [
     logo: logoJunglefy,
     title: "Senior Estimator",
     url: "https://junglefy.com.au",
-    description: `I wanted to try something completely new and help bring more nature back into our world. Junglefy are Australia's leading vertical garden specialists.  I began in the construction team and progressed through to Sales as the Senior Estimator.`,
+    description: `I wanted to help bring more nature back into our world, so I found Junglefy - Australia's leading vertical garden specialists.  I began in the construction team and progressed to the Sales team as a Senior Estimator.`,
     highlights: [
-      "Ability to quickly gain proficiency and progress in a new industry/field;",
-      "Work with all elements of the business, including client briefings, tender proposals, project finance forecasting and handovers/reviews;",
-      "Contribute in a business development capacity to the company;"
+      "Ability to quickly gain proficiency in a new industry/field;",
+      "Sales-related tasks including client briefings, tender bids/proposals, forecasting and handovers/reviews;",
+      "Project scoping & requirements, planning, as well as generating construction drawings through CAD."
     ],
     includeInResume: true
   },
@@ -327,7 +326,7 @@ export const experience: IExperience[] = [
     title: "Project Manager",
     description: `Simply was a web development agency located in Sydney Australia, specializing in custom BigCommerce and WordPress installations.`,
     highlights: [
-      "Manage project deliverables, scope and change approvals, and progress/stage invoicing;",
+      "Manage project deliverables, scope, and change approvals;",
       "Manage remote development teams to deliver project requirements, customisations and as-built documentation;"
     ],
     includeInResume: true
@@ -337,9 +336,9 @@ export const experience: IExperience[] = [
     company: "Platinum Direct Finance Aust.",
     logo: logoPDFA,
     title: "IT Consultant [Contract Role]",
-    description: `This engagement required updating existing office server/networking infrastructure (appx. 30 staff), as well as providing an enhanced security system.`,
+    description: `Professional engagement to update existing office server/networking infrastructure (appx. 30 staff), and improve existing security measures.`,
     highlights: [
-      "Project discovery/scoping, planning, design, procurement and implementation of new systems;",
+      "Project discovery/scoping, planning, design, procurement and implementation of new systems/hardware;",
       "As-built documentation and training;"
     ],
     includeInResume: true
@@ -349,7 +348,7 @@ export const experience: IExperience[] = [
     company: "NSW Department of Education",
     logo: logoDEC,
     title: "Senior VMware Engineer",
-    description: `The Department is one of the largest IT networks in the southern hemisphere. I worked in a team of four responsible for the directorate's private cloud compute infrastructure.`,
+    description: `I was a member of a four person team responsible for the directorate's private cloud compute infrastructure.`,
     highlights: [
       "Planning, provisioning and scaling of the environment, including upgrade and migration works;",
       "Management/orchestration of 1000+ VMs on 200+ physical hosts, housed across two enterprise-grade data centres;"
@@ -381,5 +380,24 @@ export const education = [
     name: "Higher School Certificate",
     school: "The Hills Grammar School, Sydney",
     year: 1999
+  }
+];
+
+export const certifications = [
+  {
+    name: "VMWare Certified Professional #61445",
+    year: 2012
+  },
+  {
+    name: "CCA XenServer Enterprise Edition 5.0",
+    year: 2010
+  },
+  {
+    name: "Microsoft MCP / MCTS #836845",
+    year: 2009
+  },
+  {
+    name: "ITIL v3 Foundation",
+    year: 2008
   }
 ];

@@ -375,21 +375,6 @@ h3 {
  */
 
 .resume {
-  .page {
-    border: 1px solid #ccc;
-    border-radius: unset;
-    max-width: 21cm;
-    height: 29.7cm;
-    padding: 0.8cm 0.8cm 1.5cm;
-    @media print {
-      border: unset;
-      box-shadow: unset;
-      width: 100%;
-      max-width: unset;
-      height: unset;
-      padding: unset;
-    }
-  }
   h1,
   h2,
   h3 {
@@ -426,9 +411,30 @@ h3 {
     letter-spacing: unset;
     margin-bottom: 6px;
   }
-  // .header {
-  //   width: 100%;
-  // }
+  .page {
+    border: 1px solid #ccc;
+    border-radius: unset;
+    width: 21cm;
+    height: 29.7cm;
+    padding: 0.8cm 0.8cm 1.5cm;
+    margin: 0 auto 60px;
+    overflow: hidden;
+    @media print {
+      border: unset;
+      box-shadow: unset;
+      width: 100%;
+      max-width: unset;
+      height: unset;
+      padding: unset;
+      margin-right: unset;
+    }
+  }
+  .page-break {
+    page-break-after: always;
+    @media print {
+      flex: 1;
+    }
+  }
   .lhs-col {
     flex: 1;
     .left-column {
