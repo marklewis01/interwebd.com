@@ -2,7 +2,7 @@ import { h, Fragment } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
 
 // Mui
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Button, Grid, Icon, Paper, Typography } from "@material-ui/core";
 
 // data
 import {
@@ -12,6 +12,8 @@ import {
   projects,
   skills
 } from "../data";
+
+import ResumePDF from "../assets/cv.pdf";
 
 // Constants
 const pageHeightInPx = 1122;
@@ -71,6 +73,18 @@ export default ({ path }: { path: string }) => {
 
   return (
     <Grid container className="resume">
+      <Grid container justify="flex-end" className="download-wrapper">
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<Icon>get_app</Icon>}
+          href={ResumePDF}
+          target="_blank"
+          style={{ color: "white" }}
+        >
+          Download Resume
+        </Button>
+      </Grid>
       <Paper className="page">
         <HeaderIntro getHeight={getHeight} />
         <PageBreak
