@@ -447,9 +447,6 @@ h3 {
   }
   .page-break {
     page-break-after: always;
-    @media print {
-      flex: 1;
-    }
   }
   .lhs-col {
     flex: 1;

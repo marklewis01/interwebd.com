@@ -135,7 +135,9 @@ const PageBreak = ({
       className="page-break"
       style={{ height: innerPageHeight - pxAbove }}
     ></div>
-  ) : null;
+  ) : (
+    <div />
+  );
 };
 
 const HeaderIntro = ({ getHeight }: { getHeight: GetHeight }) => {
@@ -150,10 +152,10 @@ const HeaderIntro = ({ getHeight }: { getHeight: GetHeight }) => {
       <Typography variant="h1">Mark Lewis</Typography>
       <Typography variant="h2">JavaScript Developer</Typography>
       <Typography>
-        I'm happiest when building. Currently enjoying anything Node, React or
-        React Native, whilst utilising TypeScript to produce better code. I am
-        looking to work in a team where I can both contribute and grow, and work
-        on projects that advance and help people in their daily lives.
+        I'm happiest when building, and currently enjoying all things Node,
+        React and React Native, utilising TypeScript to produce better code. I
+        am looking to work in a team where I can both contribute and grow, and
+        work on projects that advance and help people in their daily lives.
       </Typography>
     </Grid>
   );

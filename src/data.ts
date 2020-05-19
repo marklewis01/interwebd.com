@@ -59,18 +59,18 @@ export const skills = {
       order: 3,
       label: "Infrastructure",
       skills: [
-        [
-          "Google Firebase",
-          [
-            "Cloud Firestore (NoSql)",
-            "Cloud Functions",
-            "Authentication",
-            "Cloud Storage",
-            "Hosting"
-          ]
-        ],
+        // [
+        //   "Google Firebase",
+        //   [
+        //     "Cloud Firestore (NoSql)",
+        //     "Cloud Functions",
+        //     "Authentication",
+        //     "Cloud Storage",
+        //     "Hosting"
+        //   ]
+        // ],
         "AWS CodeDeploy, CodePipeline, ElasticBeanstalk",
-        "GCP Compute Engine"
+        "Google Firebase, Compute Engine"
       ]
     },
     frameworks: {
@@ -100,8 +100,8 @@ export const skills = {
 
 export const projects: IProject[] = [
   {
-    label: "Time-Lapse mobile app",
-    description: `Take photos (with overlays), store in a project, and compare progress in a slider. A React Native app to explore APIs and the Expo framework.`,
+    label: "Time-Lapse app",
+    description: `Time-Lapse allows users to take a photo and match its composition to a previous image by overlaying it in the viewfinder. It allows consistent before/after shots and includes a slider for easy comparison. There is a short demo video via the project link above.`,
     keywords: [
       "React Native",
       "Expo.io",
@@ -116,7 +116,7 @@ export const projects: IProject[] = [
   {
     label: "interwebd.com",
     description:
-      "This portfolio site to demonstrate some of my frontend skills, whilst also a chance to explore Preact.js, a 3kB React alternative.",
+      "This portfolio site to demonstrates some of my frontend skills, and gave me the chance to explore Preact.js, a 3kB React alternative.",
     keywords: [
       "Preact",
       "Continual Deployment: Github -> ZEIT",
@@ -130,7 +130,7 @@ export const projects: IProject[] = [
   {
     label: "Finishes v3",
     description:
-      "The third iteration, resulting from pilot customer feedback, of a SaaS offering for the building industry.",
+      "Finishes helps Architects and building professionals document products within their projects, and is a personal project. This is the third iteration of the platform resulting from pilot customer feedback. I have ported the database from Firestore to MySQL, and implemented Redux to help manage a more complex UI.",
     keywords: ["MySQL", "Node", "Express", "React", "Redux", "TypeScript"],
     web: "https://finishes.app",
     images: [
@@ -148,7 +148,7 @@ export const projects: IProject[] = [
     label: "GatsbyJS Starter Site",
     shortDescription: "",
     description:
-      "A starter template site built to get an understanding of the GatsbyJS framework. The site is responsive, utilising both JSS and SASS, and has a mix of both stateful and stateless components.",
+      "A starter template site built to explore the GatsbyJS framework. The site is responsive, utilising both JSS and SASS, and has a mix of both stateful and stateless components.",
     keywords: ["Gatsby", "JSS", "Material-UI", "SASS"],
     codebase: "https://github.com/marklewis01/simple-gatsby-site",
     web: "https://marklewis01.github.io/simple-gatsby-site",
@@ -189,7 +189,7 @@ export const projects: IProject[] = [
     label: "Firebase Starter",
     shortDescription: "",
     description:
-      "A starter template featuring a React front-end and a Google Firebase backend. The template has authentication (using Firebase Authentication), the typical login t_gatsby_features, and protected routes. State is managed using the lightweight Unstated.js library.",
+      "A starter template providing a React client and a Google Firebase backend. The template uses Firebase Authentication, features typical login functionality, and has protected routes. State is managed using Unstated.js.",
     keywords: [
       "Authentication",
       "Unstated.js",
@@ -228,7 +228,8 @@ export const projects: IProject[] = [
   },
   {
     label: "Junglefy website",
-    shortDescription: "",
+    shortDescription:
+      "My first official web development engagement (a corporate website for a past employer), built upon WordPress using a customized theme.",
     description: "Custom WordPress and hosting.",
     keywords: ["WordPress", "CSS"],
     web: "https://junglefy.com.au",
