@@ -153,7 +153,7 @@ const HeaderIntro = ({ getHeight }: { getHeight: GetHeight }) => {
         I'm happiest when building. Currently enjoying anything Node, React or
         React Native, whilst utilising TypeScript to produce better code. I am
         looking to work in a team where I can both contribute and grow, and work
-        on project/s that advance and help people in their daily lives.
+        on projects that advance and help people in their daily lives.
       </Typography>
     </Grid>
   );
