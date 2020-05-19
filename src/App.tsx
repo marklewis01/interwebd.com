@@ -27,8 +27,8 @@ export default function App() {
       <Nav />
       <div className="main">
         <Router onChange={handleRouteChange}>
-          <HomeScreen path="/" />
-          <ResumeScreen path="/resume" />
+          {/* <HomeScreen path="/" /> */}
+          <ResumeScreen path="/" />
           <Error default />
         </Router>
         <ScrollToTop />

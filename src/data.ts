@@ -101,7 +101,7 @@ export const skills = {
 export const projects: IProject[] = [
   {
     label: "Time-Lapse mobile app",
-    description: `Easily create projects, take photos (with overlays), and compare progress in a slider. A React Native app to explore APIs and the Expo framework.`,
+    description: `Take photos (with overlays), store in a project, and compare progress in a slider. A React Native app to explore APIs and the Expo framework.`,
     keywords: [
       "React Native",
       "Expo.io",
@@ -297,8 +297,8 @@ export const experience: IExperience[] = [
   {
     date: "09/17 - present",
     company: "Finishes / Interwebd",
-    title: "Founder / Freelancer",
-    description: `I have self-taught myself to code from late 2017 and today confidently build fullstack projects in JavaScript/TypeScript utilising the Node, React, and React Native libraries.`,
+    title: "Founder / Freelance Developer",
+    description: `I decided to learn to code, starting late 2017. Today I can confidently build fullstack projects in JavaScript/TypeScript utilising the Node, React, and React Native libraries.`,
     highlights: [
       "Building my first SAAS prototype (Finishes) and successfully piloting it with independent industry customers;",
       "Discovering and learning new libraries/platforms to realize my ideas, including: React, Firebase, Node, PDF-generating libraries, databases (SQL/NoSQL), Sockets, and GCP/AWS ecosystems;"

@@ -3,7 +3,14 @@ import { Link } from "preact-router/match";
 import { useState } from "preact/hooks";
 
 // Mui
-import { IconButton, Tooltip, Typography } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  IconButton,
+  Icon,
+  Tooltip,
+  Typography
+} from "@material-ui/core";
 import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
@@ -17,6 +24,7 @@ import { LightSwitch } from "../LightSwitch";
 
 // assets
 import ml_photo from "../../assets/mlewis_pic_sketch.png";
+import ResumePDF from "../../assets/cv.pdf";
 
 // StackOverflow SVG icon
 const SOIcon = () => (
@@ -120,10 +128,17 @@ export const Nav = () => {
           ))}
         </ul>
       </div>
-      <div className="resume">
-        <Link className="contact-link" href="/resume">
-          <p>Resume</p>
-        </Link>
+      <div className="download-wrapper">
+        <Button
+          // variant="contained"
+          // color="primary"
+          startIcon={<Icon>get_app</Icon>}
+          href={ResumePDF}
+          target="_blank"
+          // style={{ color: "white" }}
+        >
+          Download Resume
+        </Button>
       </div>
     </div>
   );

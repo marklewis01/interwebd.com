@@ -69,22 +69,8 @@ export default ({ path }: { path: string }) => {
     setTotalPages(Math.ceil(totalHeights / innerPageHeight));
   }, [heights]);
 
-  console.log({ heights, totalPages });
-
   return (
     <Grid container className="resume">
-      <Grid container justify="flex-end" className="download-wrapper">
-        <Button
-          variant="contained"
-          color="primary"
-          startIcon={<Icon>get_app</Icon>}
-          href={ResumePDF}
-          target="_blank"
-          style={{ color: "white" }}
-        >
-          Download Resume
-        </Button>
-      </Grid>
       <Paper className="page">
         <HeaderIntro getHeight={getHeight} />
         <PageBreak
@@ -165,7 +151,9 @@ const HeaderIntro = ({ getHeight }: { getHeight: GetHeight }) => {
       <Typography variant="h2">JavaScript Developer</Typography>
       <Typography>
         I'm happiest when building. Currently enjoying anything Node, React or
-        React Native, whilst utilising TypeScript to produce better code!{" "}
+        React Native, whilst utilising TypeScript to produce better code. I am
+        looking to work in a team where I can both contribute and grow, and work
+        on project/s that advance and help people in their daily lives.
       </Typography>
     </Grid>
   );
@@ -235,12 +223,15 @@ const Projects = ({ getHeight }: { getHeight: GetHeight }) => {
                   {p.label}
                 </Typography>
                 {p.web || p.codebase ? (
-                  <Typography
-                    className="leftDivider subtitle link"
-                    display="inline"
-                  >
-                    {p.web ? p.web : p.codebase ? p.codebase : ""}
-                  </Typography>
+                  <a href={p.web ? p.web : p.codebase} target="_blank">
+                    <Typography
+                      className="leftDivider link"
+                      display="inline"
+                      color="inherit"
+                    >
+                      {p.web ? p.web : p.codebase ? p.codebase : ""}
+                    </Typography>
+                  </a>
                 ) : null}
               </Grid>
               <Typography className="project-text">
