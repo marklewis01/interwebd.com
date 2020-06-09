@@ -19,7 +19,7 @@ interface IProject {
   shortDescription?: string;
   description: string;
   keywords?: string[];
-  date: number;
+  date: number | string;
   codebase?: string;
   web?: string;
   images?: {

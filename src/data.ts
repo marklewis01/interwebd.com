@@ -70,7 +70,7 @@ export const skills = {
         //   ]
         // ],
         "AWS CodeDeploy, CodePipeline, ElasticBeanstalk",
-        "Google Firebase, Compute Engine"
+        "Google Firebase, Compute, CloudFunctions"
       ]
     },
     frameworks: {
@@ -82,7 +82,7 @@ export const skills = {
         "React-Redux",
         ["Node", ["Express"]],
         "Socket.io",
-        "Preact / GatsbyJS"
+        "Preact/GatsbyJS"
       ]
     },
     databases: {
@@ -100,34 +100,6 @@ export const skills = {
 
 export const projects: IProject[] = [
   {
-    label: "Time-Lapse app",
-    description: `Time-Lapse allows users to take a photo and match its composition to a previous image by overlaying it in the viewfinder. It allows consistent before/after shots and includes a slider for easy comparison. There is a short demo video via the project link above.`,
-    keywords: [
-      "React Native",
-      "Expo.io",
-      "SQLite",
-      "TypeScript",
-      "React-Native-Paper"
-    ],
-    codebase: "https://github.com/marklewis01/time-lapse",
-    date: 2020,
-    includeInResume: true
-  },
-  {
-    label: "interwebd.com",
-    description:
-      "This portfolio site to demonstrates some of my frontend skills, and gave me the chance to explore Preact.js, a 3kB React alternative.",
-    keywords: [
-      "Preact",
-      "Continual Deployment: Github -> ZEIT",
-      "SCSS",
-      "Material-UI"
-    ],
-    codebase: "https://github.com/marklewis01/interwebd.com",
-    date: 2020,
-    includeInResume: true
-  },
-  {
     label: "Finishes v3",
     description:
       "Finishes helps Architects and building professionals document products within their projects, and is a personal project. This is the third iteration of the platform resulting from pilot customer feedback. I have ported the database from Firestore to MySQL, and implemented Redux to help manage a more complex UI.",
@@ -141,9 +113,38 @@ export const projects: IProject[] = [
         }
       }
     ],
-    date: 2019,
+    date: "2018 -\npresent",
     includeInResume: true
   },
+  {
+    label: "Digital Resume",
+    description:
+      "This portfolio site to demonstrates some of my frontend skills, and gave me the chance to explore Preact.js, a 3kB React alternative. A link to the live site is available through the Github link below - where you can see the codebase, too!",
+    keywords: [
+      "Preact",
+      "Continual Deployment: Github -> ZEIT",
+      "SCSS",
+      "Material-UI"
+    ],
+    codebase: "https://github.com/marklewis01/interwebd.com",
+    date: 2020,
+    includeInResume: true
+  },
+  {
+    label: "Time-Lapse app",
+    description: `Time-Lapse allows users to take a photo and match its composition to a previous image by overlaying it in the viewfinder. It allows consistent before/after shots and includes a slider for easy comparison. There is a short demo video via the project link above.`,
+    keywords: [
+      "React Native",
+      "Expo.io",
+      "SQLite",
+      "TypeScript",
+      "React-Native-Paper"
+    ],
+    codebase: "https://github.com/marklewis01/time-lapse",
+    date: 2020,
+    includeInResume: true
+  },
+
   {
     label: "GatsbyJS Starter Site",
     shortDescription: "",
@@ -275,8 +276,7 @@ export const experience: IExperience[] = [
     logo: logoFinishes,
     title: "Founder",
     url: "https://finishes.app",
-    description: `Finishes is a new tool for the building industry to collaboratively find
-        and select the finishes for their projects.<br />
+    description: `Finishes is a new tool for the building industry to collaboratively find and select the finishes for their projects.<br />
         The platform is still under development, incorporating feedback and improvements from two previous
         closed-beta programs.`,
     highlights: [
@@ -301,8 +301,9 @@ export const experience: IExperience[] = [
     title: "Founder / Freelance Developer",
     description: `I decided to learn to code, starting late 2017. Today I can confidently build fullstack projects in JavaScript/TypeScript utilising the Node, React, and React Native libraries.`,
     highlights: [
-      "Building my first SAAS prototype (Finishes) and successfully piloting it with independent industry customers;",
-      "Discovering and learning new libraries/platforms to realize my ideas, including: React, Firebase, Node, PDF-generating libraries, databases (SQL/NoSQL), Sockets, and GCP/AWS ecosystems;"
+      "Ambitious, self-driven, strong ability to self-organize and manage time;",
+      "Built first SAAS prototype (Finishes) with successful pilot program to an independent industry customer;",
+      "Competent in utilizing existing libraries to fastrack the realization of my ideas (ie. React, Firebase, Node, PDF-generating libraries, databases (SQL/NoSQL), Sockets, and GCP/AWS ecosystems);"
     ],
     includeInResume: true
   },
@@ -315,8 +316,8 @@ export const experience: IExperience[] = [
     description: `I wanted to help bring more nature back into our world, so I found Junglefy - Australia's leading vertical garden specialists.  I began in the construction team and progressed to the Sales team as a Senior Estimator.`,
     highlights: [
       "Ability to quickly gain proficiency in a new industry/field;",
-      "Sales-related tasks including client briefings, tender bids/proposals, forecasting and handovers/reviews;",
-      "Project scoping & requirements, planning, as well as generating construction drawings through CAD."
+      "Client briefings, tender bids/proposals, forecasting and handovers/reviews;",
+      "Project scoping, planning, reporting on deliverables."
     ],
     includeInResume: true
   },
@@ -328,7 +329,7 @@ export const experience: IExperience[] = [
     description: `Simply was a web development agency located in Sydney Australia, specializing in custom BigCommerce and WordPress installations.`,
     highlights: [
       "Manage project deliverables, scope, and change approvals;",
-      "Manage remote development teams to deliver project requirements, customisations and as-built documentation;"
+      "Manage remote development teams across multiple continents;"
     ],
     includeInResume: true
   },
@@ -339,7 +340,7 @@ export const experience: IExperience[] = [
     title: "IT Consultant [Contract Role]",
     description: `Professional engagement to update existing office server/networking infrastructure (appx. 30 staff), and improve existing security measures.`,
     highlights: [
-      "Project discovery/scoping, planning, design, procurement and implementation of new systems/hardware;",
+      "Project discovery, design, and implementation of new systems/hardware;",
       "As-built documentation and training;"
     ],
     includeInResume: true
@@ -351,22 +352,22 @@ export const experience: IExperience[] = [
     title: "Senior VMware Engineer",
     description: `I was a member of a four person team responsible for the directorate's private cloud compute infrastructure.`,
     highlights: [
-      "Planning, provisioning and scaling of the environment, including upgrade and migration works;",
-      "Management/orchestration of 1000+ VMs on 200+ physical hosts, housed across two enterprise-grade data centres;"
+      "Ongoing planning, provisioning and scaling of the environment;",
+      "Orchestration of 1000+ VMs on 200+ physical hosts;"
     ],
     includeInResume: true
   },
   {
-    date: "Jun 2008 - Mar 2010",
+    date: "06/08 - 03/10",
     company: "Dimension Data",
     logo: logoDD,
     title: "Support Engineer (Microsoft Infrastructure) ",
-    description: `The primary focus of this position is administering enterprise Windows/Intel environments, specialising in virtualized datacentre infrastructure. Responsible for management of client VMware environments across both V3 and V4 platforms, including design and implementation of infrastructure upgrades.`,
+    description: `Management and administration of enterprise Windows/Intel environments, specialising in virtualized datacentre infrastructure.`,
     highlights: [
-      "Windows 7 Pilot Program – representing internal IT team for global group rollout (Australian-led)",
-      "vSphere 4 Upgrade, including requirements scoping, build and migration work",
-      "Being promoted from Level 1 Support team straight to the Level 3 Systems Team, through demonstrated design and initiative to work on more technical platforms."
-    ]
+      "Windows 7 Pilot – representative for global group rollout (Australian-led);",
+      "vSphere 4 Upgrade, including scoping, build and migration work;"
+    ],
+    includeInResume: true
   }
 ];
 

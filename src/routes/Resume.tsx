@@ -94,7 +94,7 @@ export default ({ path }: { path: string }) => {
           </Grid>
           <Grid item xs={12} md="auto" className="rhs-col">
             <Grid container direction="column">
-              <PersonalInfo />
+              {/* <PersonalInfo /> */}
               <Education />
               <Certifications />
             </Grid>

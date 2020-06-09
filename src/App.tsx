@@ -9,7 +9,7 @@ import { Nav } from "./components/Nav";
 import ScrollToTop from "./components/ScrollToTop";
 
 // routes/pages
-import HomeScreen from "./routes/Home";
+// import HomeScreen from "./routes/Home";
 import ResumeScreen from "./routes/Resume";
 
 // styles
